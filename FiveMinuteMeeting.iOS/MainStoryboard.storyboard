@@ -128,10 +128,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="" borderStyle="roundedRect" minimumFontSize="17" id="72" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="" borderStyle="roundedRect" minimumFontSize="17" id="72" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="307" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="128"/>
+                                </constraints>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="73" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="278" width="280" height="21"/>
@@ -140,14 +143,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="116" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="116" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="74" y="345" width="172" height="172"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="131"/>
+                                    <constraint firstAttribute="height" constant="172" id="132"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="50" firstAttribute="leading" secondItem="42" secondAttribute="leading" constant="0.0" id="52"/>
                             <constraint firstItem="50" firstAttribute="trailing" secondItem="42" secondAttribute="trailing" constant="0.0" id="53"/>
                             <constraint firstItem="50" firstAttribute="bottom" secondItem="42" secondAttribute="bottom" constant="1" id="54"/>
+                            <constraint id="126" firstItem="42" firstAttribute="trailing" secondItem="72" secondAttribute="trailing" constant="20"/>
+                            <constraint id="127" firstItem="42" firstAttribute="bottom" secondItem="72" secondAttribute="bottom" constant="231"/>
+                            <constraint id="129" firstItem="42" firstAttribute="trailing" secondItem="116" secondAttribute="trailing" constant="74"/>
+                            <constraint id="130" firstItem="42" firstAttribute="bottom" secondItem="116" secondAttribute="bottom" constant="51"/>
                         </constraints>
                     </view>
                     <connections>

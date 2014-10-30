@@ -372,22 +372,43 @@ namespace FiveMinuteMeeting.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_action_calendar = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int pin_progress_pinned = 2130837505;
+			public const int ic_action_call = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int pin_progress_shadow = 2130837506;
+			public const int ic_action_content_save = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int pin_progress_unpinned = 2130837507;
+			public const int ic_action_email = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int scrubber_control_normal_holo = 2130837508;
+			public const int ic_add = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int scrubber_control_pressed_holo = 2130837509;
+			public const int ic_launcher = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Icon = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int missing = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int pin_progress_pinned = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int pin_progress_shadow = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int pin_progress_unpinned = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int scrubber_control_normal_holo = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int scrubber_control_pressed_holo = 2130837516;
 			
 			static Drawable()
 			{
@@ -402,14 +423,14 @@ namespace FiveMinuteMeeting.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a001c
-			public const int action_edit = 2131361820;
-			
 			// aapt resource value: 0x7f0a001d
-			public const int action_save = 2131361821;
+			public const int add = 2131361821;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int bottom = 2131361792;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int calendar = 2131361819;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int center = 2131361793;
@@ -444,11 +465,8 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a000a
 			public const int fill_vertical = 2131361802;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int first_name = 2131361813;
-			
-			// aapt resource value: 0x7f0a0010
-			public const int imageView = 2131361808;
+			// aapt resource value: 0x7f0a0014
+			public const int first_name = 2131361812;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int last_name = 2131361814;
@@ -456,29 +474,32 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a000b
 			public const int left = 2131361803;
 			
+			// aapt resource value: 0x7f0a0011
+			public const int name = 2131361809;
+			
+			// aapt resource value: 0x7f0a0012
+			public const int phone = 2131361810;
+			
+			// aapt resource value: 0x7f0a0010
+			public const int photo = 2131361808;
+			
 			// aapt resource value: 0x7f0a001a
-			public const int phone = 2131361818;
-			
-			// aapt resource value: 0x7f0a0013
-			public const int photo = 2131361811;
-			
-			// aapt resource value: 0x7f0a001b
-			public const int refresher = 2131361819;
+			public const int refresher = 2131361818;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int right = 2131361804;
 			
+			// aapt resource value: 0x7f0a001c
+			public const int save = 2131361820;
+			
 			// aapt resource value: 0x7f0a000d
 			public const int start = 2131361805;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int textView = 2131361809;
+			// aapt resource value: 0x7f0a0013
+			public const int textView1 = 2131361811;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int textView1 = 2131361812;
-			
-			// aapt resource value: 0x7f0a0012
-			public const int textView2 = 2131361810;
+			// aapt resource value: 0x7f0a0015
+			public const int textView2 = 2131361813;
 			
 			// aapt resource value: 0x7f0a0017
 			public const int textView3 = 2131361815;
@@ -550,7 +571,10 @@ namespace FiveMinuteMeeting.Droid
 		{
 			
 			// aapt resource value: 0x7f090000
-			public const int main = 2131296256;
+			public const int detail = 2131296256;
+			
+			// aapt resource value: 0x7f090001
+			public const int main = 2131296257;
 			
 			static Menu()
 			{

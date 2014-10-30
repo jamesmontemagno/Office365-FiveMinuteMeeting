@@ -4,6 +4,7 @@ using Microsoft.Office365.OAuth;
 
 #if __ANDROID__
 using Android.Content;
+using System;
 #elif __IOS__
 using MonoTouch.UIKit;
 using System;

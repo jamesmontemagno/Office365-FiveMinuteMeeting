@@ -76,8 +76,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Xamarin.Android.Support.v4.19.0.2\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="UrlImageViewHelper">
+      <HintPath>..\Components\urlimageviewhelper-1.0.4\lib\android\UrlImageViewHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v13">
+      <HintPath>..\packages\Xamarin.Android.Support.v13.20.0.0.4\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Android.Support.v4.20.0.0.4\lib\MonoAndroid32\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v7.CardView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.21.0.0-rc1\lib\MonoAndroid10\Xamarin.Android.Support.v7.CardView.dll</HintPath>
@@ -87,6 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactAdapter.cs" />
+    <Compile Include="DetailActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +126,44 @@
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\menu\detail.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\missing.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_calendar.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_call.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_email.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_calendar.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_call.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_email.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_call.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_email.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_email.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\menu\main.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="urlimageviewhelper">
+      <Visible>False</Visible>
+      <Version>1.0.4</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="..\FiveMinuteMeeting.Shared\FiveMinuteMeeting.Shared.projitems" Label="Shared" Condition="Exists('..\FiveMinuteMeeting.Shared\FiveMinuteMeeting.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -25,7 +25,8 @@
                     android:layout_marginRight="8dp"
                     android:gravity="center_vertical"
                     android:layout_gravity="center_vertical"
-                    android:id="@+id/photo" />
+                    android:id="@+id/photo"
+                    android:src="@drawable/missing" />
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="0dp"

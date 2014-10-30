@@ -147,11 +147,6 @@ namespace FiveMinuteMeeting.iOS
 
     private async void SendEmail()
     {
-      ViewModel.SendEmail();
-
-
-      return;
-
       var mailController = new MFMailComposeViewController();
 
       mailController.SetToRecipients(new string[] { TextEmail.Text });

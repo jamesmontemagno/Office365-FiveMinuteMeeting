@@ -145,7 +145,7 @@ namespace FiveMinuteMeeting.iOS
         {
           cell = new UITableViewCell(UITableViewCellStyle.Subtitle, cellIdentifier);
           cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-          cell.ImageView.Layer.CornerRadius = 22.0F;
+          cell.ImageView.Layer.CornerRadius = 21.0F;
           cell.ImageView.Layer.MasksToBounds = false;
           cell.ImageView.Layer.BorderColor = new CGColor(1, 1, 1);
           cell.ImageView.Layer.BorderWidth = 2;

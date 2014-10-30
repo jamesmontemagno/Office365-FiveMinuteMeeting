@@ -11,7 +11,7 @@ using Android.Support.V4.Widget;
 
 namespace FiveMinuteMeeting.Droid
 {
-  [Activity(Label = "Five Minute Meeting", MainLauncher = true, Icon = "@drawable/icon")]
+  [Activity(Label = "Five Minute Meeting", MainLauncher = true, Icon = "@drawable/ic_launcher")]
   public class MainActivity : ListActivity
   {
 
@@ -22,7 +22,6 @@ namespace FiveMinuteMeeting.Droid
     {
       base.OnCreate(bundle);
 
-      // Set our view from the "main" layout resource
       SetContentView(Resource.Layout.Main);
 
       refresher = FindViewById<SwipeRefreshLayout>(Resource.Id.refresher);
@@ -40,8 +39,51 @@ namespace FiveMinuteMeeting.Droid
       };
 
       viewModel.PropertyChanged += PropertyChanged;
+      ListAdapter = new ContactAdapter(this, viewModel);
       await Client.EnsureClientCreated(this);
-      await viewModel.GetContactsAsync();
+      viewModel.GetContactsAsync();
+    }
+
+    protected override void OnListItemClick(ListView l, View v, int position, long id)
+    {
+      base.OnListItemClick(l, v, position, id);
+      var contact = viewModel.Contacts[position];
+      var vm = new DetailsViewModel(contact);
+      DetailActivity.ViewModel = vm;
+      var intent = new Intent(this, typeof(DetailActivity));
+      StartActivity(intent);
+    }
+
+
+    public override bool OnCreateOptionsMenu(IMenu main)
+    {
+	    MenuInflater.Inflate(Resource.Menu.main, main);
+	    return base.OnCreateOptionsMenu(main);
+    }
+
+
+    public override bool OnOptionsItemSelected(IMenuItem item)
+    {
+      switch (item.ItemId)
+      {
+        case Resource.Id.add:
+          DetailActivity.ViewModel = null;
+           var intent = new Intent(this, typeof(DetailActivity));
+          StartActivity(intent);
+          break;
+      }
+    }
+
+    
+
+    protected async override void OnResume()
+    {
+      base.OnResume();
+
+      if(Client.Instance != null && viewModel.Contacts.Count == 0)
+        viewModel.GetContactsAsync();
+      else if (Client.Instance != null)
+        RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
     }
 
     void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -53,6 +95,7 @@ namespace FiveMinuteMeeting.Droid
           case "IsBusy":
             {
               refresher.Refreshing = viewModel.IsBusy;
+              ((BaseAdapter)ListAdapter).NotifyDataSetChanged();
             }
             break;
         }
