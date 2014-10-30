@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a15a7f29-e74e-487f-9ff7-eb980c564899</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FiveMinuteMeeting.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ContactExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Office\CalendarAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Office\Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Office\ContactsAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContactsViewModel.cs" />
+  </ItemGroup>
+</Project>
