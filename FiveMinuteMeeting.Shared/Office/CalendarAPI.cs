@@ -15,6 +15,17 @@ namespace FiveMinuteMeeting.Shared
       {
         var calendarEvent = new Event
         {
+          Id = "10",
+          BodyPreview = "Preview",
+          Categories = new List<string>(),
+          ChangeKey = string.Empty,
+          HasAttachments = false,
+          Importance = Microsoft.Office365.OutlookServices.Importance.High,
+          IsAllDay = false,
+          IsCancelled = false,
+          ResponseRequested = false,
+          ShowAs = FreeBusyStatus.Busy,
+          Type = EventType.Occurrence,
           Attendees = new List<Attendee>
           {
             new Attendee
@@ -23,15 +34,33 @@ namespace FiveMinuteMeeting.Shared
               {
                 Address = email,
                 Name = name
-              }
+              },
+              Type = AttendeeType.Required
             }
           },
           Body = new ItemBody{Content = "5 minute meeting for status report.", ContentType = BodyType.Text},
-          Start = start,
-          End = start.AddMinutes(5),
-          Type = EventType.SingleInstance
+          Start = new DateTimeOffset(start),
+          End = new DateTimeOffset(start.AddMinutes(5)), 
+          Subject = "5 Minute Meeting",
+          Location = new Location { DisplayName = "Everywhere"}
         };
-        await Client.Instance.Me.Calendar.CalendarView.AddEventAsync(calendarEvent);
+       
+        try
+        {
+         // var info = await Client.CalendarInstance.Me.Calendars.GetById("Calendar").Events.Take(10).ExecuteAsync();
+       
+          Client.Instance.Me.Events.AddEventAsync(calendarEvent).ContinueWith((action) =>
+            {
+              var result = action.AsyncState;
+            });
+        }
+        catch(Exception ex)
+        {
+          var message = ex.ToString();
+        }
       }
+
+
+     
     }
 }

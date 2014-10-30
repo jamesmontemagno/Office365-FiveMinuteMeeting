@@ -83,6 +83,8 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="76" translatesAutoresizingMaskIntoConstraints="NO"/>
+                                    <barButtonItem title="Item" id="107" translatesAutoresizingMaskIntoConstraints="NO" image="calendar.png"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="108" translatesAutoresizingMaskIntoConstraints="NO"/>
                                     <barButtonItem title="Item" id="74" translatesAutoresizingMaskIntoConstraints="NO" image="email.png">
                                         <connections>
                                             <action selector="OnEmailClicked:" destination="41" id="83"/>
@@ -124,12 +126,12 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="" borderStyle="roundedRect" minimumFontSize="17" id="71" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="240" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="" borderStyle="roundedRect" minimumFontSize="17" id="72" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="307" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="73" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="278" width="280" height="21"/>
@@ -138,6 +140,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="116" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="74" y="345" width="172" height="172"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="50" firstAttribute="leading" secondItem="42" secondAttribute="leading" constant="0.0" id="52"/>
@@ -152,6 +157,8 @@
                         <outlet property="TextPhone" destination="71" id="name-outlet-71"/>
                         <outlet property="TextEmail" destination="72" id="name-outlet-72"/>
                         <outlet property="TextLast" destination="69" id="name-outlet-69"/>
+                        <outlet property="ButtonAddEvent" destination="107" id="name-outlet-107"/>
+                        <outlet property="ImagePhoto" destination="116" id="name-outlet-116"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43" userLabel="First Responder" sceneMemberID="firstResponder"/>

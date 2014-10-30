@@ -5,6 +5,8 @@ using System.CodeDom.Compiler;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 using System.Linq;
+using SDWebImage;
+using MonoTouch.CoreGraphics;
 
 namespace FiveMinuteMeeting.iOS
 {
@@ -15,7 +17,7 @@ namespace FiveMinuteMeeting.iOS
 		}
 
     private UIActivityIndicatorView activityIndicator;
-    private ContactsViewModel viewModel = new ContactsViewModel();
+    private ContactsViewModel viewModel = App.ContactsViewModel;
     public override void ViewDidLoad()
     {
       base.ViewDidLoad();
@@ -35,7 +37,7 @@ namespace FiveMinuteMeeting.iOS
         NavigationController.PushViewController(vc, true);
       });
 
-      NavigationItem.RightBarButtonItem = addButton;;
+      NavigationItem.RightBarButtonItem = addButton;
 
       RefreshControl.ValueChanged += async (sender, args) =>
       {
@@ -55,8 +57,15 @@ namespace FiveMinuteMeeting.iOS
     {
       base.ViewDidAppear(animated);
 
-      if (viewModel.IsBusy || viewModel.Contacts.Count > 0)
+      if (viewModel.IsBusy)
         return;
+      
+      if(viewModel.Contacts.Count > 0)
+      {
+        TableView.ReloadData();
+        return;
+      }
+       
 
       await Client.EnsureClientCreated(this);
       await viewModel.GetContactsAsync();
@@ -125,7 +134,7 @@ namespace FiveMinuteMeeting.iOS
       public async override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
       {
         var contact = viewModel.ContactsGrouped[indexPath.Section][indexPath.Row];
-        //await viewModel.ExecuteDeleteExpenseCommand(expense);
+        await viewModel.DeleteContact(contact);
         tableView.ReloadData();
       }
 
@@ -136,18 +145,37 @@ namespace FiveMinuteMeeting.iOS
         {
           cell = new UITableViewCell(UITableViewCellStyle.Subtitle, cellIdentifier);
           cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-          cell.ImageView.Image = UIImage.FromBundle("missing.png");
+          cell.ImageView.Layer.CornerRadius = 22.0F;
+          cell.ImageView.Layer.MasksToBounds = false;
+          cell.ImageView.Layer.BorderColor = new CGColor(1, 1, 1);
+          cell.ImageView.Layer.BorderWidth = 2;
+          cell.ImageView.ClipsToBounds = true;
+          //cell.ImageView.Image = UIImage.FromBundle("missing.png");
         }
 
         var contact = viewModel.ContactsGrouped[indexPath.Section][indexPath.Row];
         cell.TextLabel.Text = contact.GivenName + " " + contact.Surname;
         cell.DetailTextLabel.Text = contact.MobilePhone1;
-
+        cell.ImageView.SetImage(
+            url: new NSUrl(Gravatar.GetURL(contact.EmailAddresses[0].Address, 44)),
+            placeholder: UIImage.FromBundle("missing.png")
+        );
         return cell;
+      }
+
+      public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+      {
+        var contact = viewModel.ContactsGrouped[indexPath.Section][indexPath.Row];
+        var storyboard = UIStoryboard.FromName("MainStoryboard", null);
+
+        var vc = storyboard.InstantiateViewController("detail") as ContactDetailViewController;
+        vc.ViewModel = new DetailsViewModel(contact); ;
+        controller.NavigationController.PushViewController(vc, true);
+
       }
     }
 
-    public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+    /*public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
     {
       if (segue.Identifier == "showDetail")
       {
@@ -156,7 +184,8 @@ namespace FiveMinuteMeeting.iOS
        
 
         ((ContactDetailViewController)segue.DestinationViewController).Contact = contact;
+
       }
-    }
+    }*/
 	}
 }

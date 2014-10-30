@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="FiveMinuteMeeting.Droid" android:versionCode="1" android:versionName="1.0">
-	<uses-sdk />
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
 	<application android:label="FiveMinuteMeeting.Droid" android:icon="@drawable/Icon" android:theme="@android:style/Theme.Holo.Light"></application>
 </manifest>

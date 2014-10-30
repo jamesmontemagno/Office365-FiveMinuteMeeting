@@ -222,6 +222,9 @@ namespace FiveMinuteMeeting.Droid
 		public partial class Color
 		{
 			
+			// aapt resource value: 0x7f040024
+			public const int blue = 2130968612;
+			
 			// aapt resource value: 0x7f040000
 			public const int cardview_dark_background = 2130968576;
 			
@@ -327,6 +330,9 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f04001b
 			public const int refractored_holo_red_light = 2130968603;
 			
+			// aapt resource value: 0x7f040023
+			public const int white = 2130968611;
+			
 			static Color()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -396,53 +402,95 @@ namespace FiveMinuteMeeting.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f09000f
-			public const int MyButton = 2131296271;
+			// aapt resource value: 0x7f0a001c
+			public const int action_edit = 2131361820;
 			
-			// aapt resource value: 0x7f090000
-			public const int bottom = 2131296256;
+			// aapt resource value: 0x7f0a001d
+			public const int action_save = 2131361821;
 			
-			// aapt resource value: 0x7f090001
-			public const int center = 2131296257;
+			// aapt resource value: 0x7f0a0000
+			public const int bottom = 2131361792;
 			
-			// aapt resource value: 0x7f090002
-			public const int center_horizontal = 2131296258;
+			// aapt resource value: 0x7f0a0001
+			public const int center = 2131361793;
 			
-			// aapt resource value: 0x7f090003
-			public const int center_vertical = 2131296259;
+			// aapt resource value: 0x7f0a0002
+			public const int center_horizontal = 2131361794;
 			
-			// aapt resource value: 0x7f090004
-			public const int clip = 2131296260;
+			// aapt resource value: 0x7f0a0003
+			public const int center_vertical = 2131361795;
 			
-			// aapt resource value: 0x7f090005
-			public const int clip_horizontal = 2131296261;
+			// aapt resource value: 0x7f0a0004
+			public const int clip = 2131361796;
 			
-			// aapt resource value: 0x7f090006
-			public const int clip_vertical = 2131296262;
+			// aapt resource value: 0x7f0a0005
+			public const int clip_horizontal = 2131361797;
 			
-			// aapt resource value: 0x7f090007
-			public const int end = 2131296263;
+			// aapt resource value: 0x7f0a0006
+			public const int clip_vertical = 2131361798;
 			
-			// aapt resource value: 0x7f090008
-			public const int fill = 2131296264;
+			// aapt resource value: 0x7f0a0018
+			public const int email = 2131361816;
 			
-			// aapt resource value: 0x7f090009
-			public const int fill_horizontal = 2131296265;
+			// aapt resource value: 0x7f0a0007
+			public const int end = 2131361799;
 			
-			// aapt resource value: 0x7f09000a
-			public const int fill_vertical = 2131296266;
+			// aapt resource value: 0x7f0a0008
+			public const int fill = 2131361800;
 			
-			// aapt resource value: 0x7f09000b
-			public const int left = 2131296267;
+			// aapt resource value: 0x7f0a0009
+			public const int fill_horizontal = 2131361801;
 			
-			// aapt resource value: 0x7f09000c
-			public const int right = 2131296268;
+			// aapt resource value: 0x7f0a000a
+			public const int fill_vertical = 2131361802;
 			
-			// aapt resource value: 0x7f09000d
-			public const int start = 2131296269;
+			// aapt resource value: 0x7f0a0015
+			public const int first_name = 2131361813;
 			
-			// aapt resource value: 0x7f09000e
-			public const int top = 2131296270;
+			// aapt resource value: 0x7f0a0010
+			public const int imageView = 2131361808;
+			
+			// aapt resource value: 0x7f0a0016
+			public const int last_name = 2131361814;
+			
+			// aapt resource value: 0x7f0a000b
+			public const int left = 2131361803;
+			
+			// aapt resource value: 0x7f0a001a
+			public const int phone = 2131361818;
+			
+			// aapt resource value: 0x7f0a0013
+			public const int photo = 2131361811;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int refresher = 2131361819;
+			
+			// aapt resource value: 0x7f0a000c
+			public const int right = 2131361804;
+			
+			// aapt resource value: 0x7f0a000d
+			public const int start = 2131361805;
+			
+			// aapt resource value: 0x7f0a0011
+			public const int textView = 2131361809;
+			
+			// aapt resource value: 0x7f0a0014
+			public const int textView1 = 2131361812;
+			
+			// aapt resource value: 0x7f0a0012
+			public const int textView2 = 2131361810;
+			
+			// aapt resource value: 0x7f0a0017
+			public const int textView3 = 2131361815;
+			
+			// aapt resource value: 0x7f0a0019
+			public const int textView4 = 2131361817;
+			
+			// aapt resource value: 0x7f0a000e
+			public const int top = 2131361806;
+			
+			// aapt resource value: 0x7f0a000f
+			public const int view1 = 2131361807;
 			
 			static Id()
 			{
@@ -477,7 +525,16 @@ namespace FiveMinuteMeeting.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int Contact = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Detail = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Detail_Demo = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
 			
 			static Layout()
 			{
@@ -485,6 +542,22 @@ namespace FiveMinuteMeeting.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f090000
+			public const int main = 2131296256;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}

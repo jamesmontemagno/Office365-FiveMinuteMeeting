@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace FiveMinuteMeeting.Shared.ViewModels
 {
-    public class ContactsViewModel : INotifyPropertyChanged
+    public class ContactsViewModel : BaseViewModel
     {
       public ContactsViewModel()
       {
@@ -27,6 +27,13 @@ namespace FiveMinuteMeeting.Shared.ViewModels
       {
         get { return isBusy; }
         set { isBusy = value; OnPropertyChanged("IsBusy"); }
+      }
+
+      public async Task DeleteContact(IContact contact)
+      {
+        Contacts.Remove(contact);
+        SortContacts();
+        ContactsAPI.DeleteContact(contact);
       }
 
       public async Task GetContactsAsync()
@@ -69,13 +76,13 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         ContactsGrouped = new ObservableCollection<Grouping<string, IContact>>(sorted);
       }
 
-      public event PropertyChangedEventHandler PropertyChanged;
-      private void OnPropertyChanged(string name)
-      {
-        if (PropertyChanged == null)
-          return;
 
-        PropertyChanged(this, new PropertyChangedEventArgs(name));
+      public void AddContact(IContact contact)
+      {
+        Contacts.Add(contact);
+        Contacts = new ObservableCollection<IContact>(Contacts.OrderBy(s => s.Surname));
+        SortContacts();
       }
+
     }
 }

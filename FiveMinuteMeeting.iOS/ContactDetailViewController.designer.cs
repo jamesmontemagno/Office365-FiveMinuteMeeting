@@ -16,11 +16,19 @@ namespace FiveMinuteMeeting.iOS
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIBarButtonItem ButtonAddEvent { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIBarButtonItem ButtonCall { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIBarButtonItem ButtonEmail { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIImageView ImagePhoto { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -48,6 +56,10 @@ namespace FiveMinuteMeeting.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (ButtonAddEvent != null) {
+				ButtonAddEvent.Dispose ();
+				ButtonAddEvent = null;
+			}
 			if (ButtonCall != null) {
 				ButtonCall.Dispose ();
 				ButtonCall = null;
@@ -55,6 +67,10 @@ namespace FiveMinuteMeeting.iOS
 			if (ButtonEmail != null) {
 				ButtonEmail.Dispose ();
 				ButtonEmail = null;
+			}
+			if (ImagePhoto != null) {
+				ImagePhoto.Dispose ();
+				ImagePhoto = null;
 			}
 			if (TextEmail != null) {
 				TextEmail.Dispose ();

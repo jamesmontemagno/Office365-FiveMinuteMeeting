@@ -28,11 +28,16 @@ namespace FiveMinuteMeeting.Shared
       await contact.UpdateAsync();
     }
 
+    public static async Task DeleteContact(IContact contact)
+    {
+      await contact.DeleteAsync();
+    }
+
     public static async Task<bool> AddContact(IContact contact)
     {
       try
       {
-
+        contact.FileAs = "new";
         await Client.Instance.Me.Contacts.AddContactAsync(contact);
       }
       catch(Exception ex)
@@ -42,7 +47,7 @@ namespace FiveMinuteMeeting.Shared
       return true;
     }
 
-    private static async Task SendEmail(string email, string name, string subject, string body)
+    public static async Task SendEmail(string email, string name, string subject, string body)
     {
       var message = new Message
       {
