@@ -27,7 +27,7 @@ namespace FiveMinuteMeeting.iOS
          UIBarButtonItemStyle.Plain,
          (sender, args) =>
        {
-
+        
        });
 
        NavigationItem.RightBarButtonItem = save;
@@ -51,9 +51,10 @@ namespace FiveMinuteMeeting.iOS
       }
     }
 
-    private void ShouldReturn(UITextField field)
+    private bool ShouldReturn(UITextField field)
     {
-      field.ResignFirstResponder(); ;
+      field.ResignFirstResponder();
+      return true;
     }
 
 
