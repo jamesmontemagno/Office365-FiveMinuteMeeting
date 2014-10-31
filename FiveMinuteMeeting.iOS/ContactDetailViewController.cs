@@ -59,10 +59,6 @@ namespace FiveMinuteMeeting.iOS
        TextPhone.Layer.BorderColor = color;
        TextLast.Layer.BorderColor = color;
 
-       ButtonAddEvent.Clicked += (sender, args) =>
-         {
-           ViewModel.AddEvent(TextEmail.Text, TextFirst.Text + " " + TextLast.Text);
-         };
 
        ButtonCall.Clicked += (sender, args) => PlaceCall();
        ButtonEmail.Clicked += (sender, args) => SendEmail();

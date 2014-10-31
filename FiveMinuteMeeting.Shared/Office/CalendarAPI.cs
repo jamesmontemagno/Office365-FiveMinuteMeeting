@@ -47,8 +47,7 @@ namespace FiveMinuteMeeting.Shared
        
         try
         {
-         // var info = await Client.CalendarInstance.Me.Calendars.GetById("Calendar").Events.Take(10).ExecuteAsync();
-       
+         
           Client.Instance.Me.Events.AddEventAsync(calendarEvent).ContinueWith((action) =>
             {
               var result = action.AsyncState;
@@ -59,6 +58,25 @@ namespace FiveMinuteMeeting.Shared
           var message = ex.ToString();
         }
       }
+
+      public static async Task DeleteEvent(IEvent calendarEvent)
+      {
+        await calendarEvent.DeleteAsync();
+      }
+
+      public static async Task<IEnumerable<IEvent>> GetEventsAsync()
+      {
+
+        // Obtain first page of events
+        var calResults = await (from i in Client.Instance.Me.Calendars.GetById("Calendar").Events
+                                orderby i.Start     
+                                select i).Take(100).ExecuteAsync();
+
+        return calResults.CurrentPage;
+       
+      }
+
+      
 
 
      
