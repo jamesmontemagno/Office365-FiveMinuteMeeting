@@ -31,7 +31,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
       public async Task DeleteContact(IContact contact)
       {
-        //Contacts.Remove(contact);
+        Contacts.Remove(contact);
         SortContacts();
         ContactsAPI.DeleteContact(contact);
       }
