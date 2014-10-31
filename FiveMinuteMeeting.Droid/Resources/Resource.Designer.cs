@@ -423,14 +423,14 @@ namespace FiveMinuteMeeting.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a001d
-			public const int add = 2131361821;
+			// aapt resource value: 0x7f0a001f
+			public const int add = 2131361823;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int bottom = 2131361792;
 			
-			// aapt resource value: 0x7f0a001b
-			public const int calendar = 2131361819;
+			// aapt resource value: 0x7f0a001d
+			public const int calendar = 2131361821;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int center = 2131361793;
@@ -450,8 +450,11 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a0006
 			public const int clip_vertical = 2131361798;
 			
-			// aapt resource value: 0x7f0a0018
-			public const int email = 2131361816;
+			// aapt resource value: 0x7f0a001b
+			public const int editText1 = 2131361819;
+			
+			// aapt resource value: 0x7f0a001a
+			public const int email = 2131361818;
 			
 			// aapt resource value: 0x7f0a0007
 			public const int end = 2131361799;
@@ -465,11 +468,11 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a000a
 			public const int fill_vertical = 2131361802;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int first_name = 2131361812;
-			
 			// aapt resource value: 0x7f0a0016
-			public const int last_name = 2131361814;
+			public const int first_name = 2131361814;
+			
+			// aapt resource value: 0x7f0a0018
+			public const int last_name = 2131361816;
 			
 			// aapt resource value: 0x7f0a000b
 			public const int left = 2131361803;
@@ -483,29 +486,32 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int photo = 2131361808;
 			
-			// aapt resource value: 0x7f0a001a
-			public const int refresher = 2131361818;
+			// aapt resource value: 0x7f0a0014
+			public const int photo2 = 2131361812;
+			
+			// aapt resource value: 0x7f0a001c
+			public const int refresher = 2131361820;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int right = 2131361804;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int save = 2131361820;
+			// aapt resource value: 0x7f0a001e
+			public const int save = 2131361822;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int start = 2131361805;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int textView1 = 2131361811;
-			
 			// aapt resource value: 0x7f0a0015
-			public const int textView2 = 2131361813;
+			public const int textView1 = 2131361813;
 			
 			// aapt resource value: 0x7f0a0017
-			public const int textView3 = 2131361815;
+			public const int textView2 = 2131361815;
 			
 			// aapt resource value: 0x7f0a0019
-			public const int textView4 = 2131361817;
+			public const int textView3 = 2131361817;
+			
+			// aapt resource value: 0x7f0a0013
+			public const int textView4 = 2131361811;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int top = 2131361806;

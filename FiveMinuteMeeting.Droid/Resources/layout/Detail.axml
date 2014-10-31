@@ -5,6 +5,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="12dp">
+    <TextView
+        android:text="Details"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginBottom="8dp" />
     <android.support.v7.widget.CardView
         android:layout_below="@+id/view1"
         android:layout_width="fill_parent"
@@ -26,7 +33,7 @@
                     android:layout_marginRight="8dp"
                     android:gravity="center_vertical"
                     android:layout_gravity="center_vertical"
-                    android:id="@+id/photo"
+                    android:id="@+id/photo2"
                     android:src="@drawable/missing" />
                 <LinearLayout
                     android:orientation="vertical"
@@ -79,5 +86,26 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/phone" />
         </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <TextView
+        android:text="Notes"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        card_view:cardCornerRadius="4dp">
+        <EditText
+            android:inputType="textMultiLine"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/editText1" />
     </android.support.v7.widget.CardView>
 </LinearLayout>

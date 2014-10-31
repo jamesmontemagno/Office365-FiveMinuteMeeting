@@ -143,7 +143,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="116" translatesAutoresizingMaskIntoConstraints="NO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="116" translatesAutoresizingMaskIntoConstraints="NO" image="missing.png">
                                 <rect key="frame" x="74" y="345" width="172" height="172"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="172" id="131"/>

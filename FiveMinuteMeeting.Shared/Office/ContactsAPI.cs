@@ -30,14 +30,14 @@ namespace FiveMinuteMeeting.Shared
 
     public static async Task DeleteContact(IContact contact)
     {
-      await contact.DeleteAsync();
+      
     }
 
     public static async Task<bool> AddContact(IContact contact)
     {
       try
       {
-        contact.FileAs = "new";
+        contact.FileAs = contact.Surname + ", " + contact.GivenName;
         await Client.Instance.Me.Contacts.AddContactAsync(contact);
       }
       catch(Exception ex)

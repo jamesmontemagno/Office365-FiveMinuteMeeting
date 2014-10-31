@@ -36,7 +36,7 @@ namespace FiveMinuteMeeting.Droid
       var phone = FindViewById<EditText>(Resource.Id.phone);
       var firstName = FindViewById<EditText>(Resource.Id.first_name);
       var lastName = FindViewById<EditText>(Resource.Id.last_name);
-      photo = FindViewById<ImageView>(Resource.Id.photo);
+      photo = FindViewById<ImageView>(Resource.Id.photo2);
 
       if (ViewModel == null)
       {
@@ -59,7 +59,7 @@ namespace FiveMinuteMeeting.Droid
     {
       base.OnResume();
       if(!string.IsNullOrWhiteSpace(ViewModel.Email))
-        Koush.UrlImageViewHelper.SetUrlDrawable(photo, ViewModel.Email, Resource.Drawable.missing);
+        Koush.UrlImageViewHelper.SetUrlDrawable(photo, Gravatar.GetURL(ViewModel.Email, 88), Resource.Drawable.missing);
 
     }
 
@@ -97,6 +97,9 @@ namespace FiveMinuteMeeting.Droid
           "We are having a 5 minute stand up tomorrow at this time! Check your calendar.");
           email.SetType("message/rfc822");
           StartActivity(email);
+        break;
+        case Android.Resource.Id.Home:
+        Finish();
         break;
 	    }
 	    return base.OnOptionsItemSelected(item);

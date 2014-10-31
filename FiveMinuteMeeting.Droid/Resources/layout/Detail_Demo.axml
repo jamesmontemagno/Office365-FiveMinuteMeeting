@@ -14,7 +14,7 @@
             android:layout_marginRight="8dp"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:id="@+id/photo"
+            android:id="@+id/photo2"
             android:src="@drawable/missing" />
         <LinearLayout
             android:orientation="vertical"
@@ -65,4 +65,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/phone" />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1" />
 </LinearLayout>

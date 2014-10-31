@@ -11,7 +11,7 @@ using Android.Support.V4.Widget;
 
 namespace FiveMinuteMeeting.Droid
 {
-  [Activity(Label = "Five Minute Meeting", MainLauncher = true, Icon = "@drawable/ic_launcher")]
+  [Activity(Label = "My Team", MainLauncher = true, Icon = "@drawable/ic_launcher")]
   public class MainActivity : ListActivity
   {
 
@@ -40,9 +40,19 @@ namespace FiveMinuteMeeting.Droid
 
       viewModel.PropertyChanged += PropertyChanged;
       ListAdapter = new ContactAdapter(this, viewModel);
+
+      ListView.ItemLongClick += ListView_ItemLongClick;
       await Client.EnsureClientCreated(this);
       viewModel.GetContactsAsync();
     }
+
+    async void ListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+    {
+      await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
+      RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
+    }
+
+
 
     protected override void OnListItemClick(ListView l, View v, int position, long id)
     {
