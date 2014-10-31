@@ -12,7 +12,8 @@ This mobile app is brought to you by your friends at [Xamarin](http://www.xamari
 
 ### Screenshots
 
-![](Screenshots/android1.png)![](Screenshots/android2.png)![](Screenshots/ios1.png)![](Screenshots/ios2.png)
+![](Screenshots/android1.png) ![](Screenshots/android2.png)
+![](Screenshots/ios1.png) ![](Screenshots/ios2.png)
 
 ### Development by:
 - James Montemagno: [Twitter](http://www.twitter.com/jamesmontemagno) | [Blog](http://motzcod.es) | [GitHub](http://www.github.com/jamesmontemagno)
