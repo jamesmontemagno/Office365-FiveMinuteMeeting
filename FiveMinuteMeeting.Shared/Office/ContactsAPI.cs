@@ -17,7 +17,7 @@ namespace FiveMinuteMeeting.Shared
      
       // Obtain first page of contacts
       var contactsResults = await (from i in Client.Instance.Me.Contacts
-                                   orderby i.DisplayName
+                                   orderby i.Surname
                                    select i).Take(100).ExecuteAsync();
 
       return contactsResults.CurrentPage;

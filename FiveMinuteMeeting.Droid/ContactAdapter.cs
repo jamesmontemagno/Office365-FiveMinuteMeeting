@@ -54,7 +54,7 @@ namespace FiveMinuteMeeting.Droid
       var contact = viewModel.Contacts[position];
       wrapper.Name.Text = contact.GivenName + " " + contact.Surname;
       wrapper.Phone.Text = contact.MobilePhone1;
-      Koush.UrlImageViewHelper.SetUrlDrawable(wrapper.Photo, Gravatar.GetURL(contact.EmailAddresses[0].Address, 44), Resource.Drawable.missing);
+      Koush.UrlImageViewHelper.SetUrlDrawable(wrapper.Photo, Gravatar.GetURL(contact.EmailAddresses[0].Address, 88), Resource.Drawable.missing);
 
       //imageLoader.DisplayImage(Gravatar.GetURL(contact.EmailAddresses[0].Address, 44), wrapper.Photo, Resource.Drawable.missing);
      

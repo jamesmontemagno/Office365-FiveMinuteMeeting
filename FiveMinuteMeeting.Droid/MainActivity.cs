@@ -55,10 +55,10 @@ namespace FiveMinuteMeeting.Droid
     }
 
 
-    public override bool OnCreateOptionsMenu(IMenu main)
+    public override bool OnCreateOptionsMenu(IMenu menu)
     {
-	    MenuInflater.Inflate(Resource.Menu.main, main);
-	    return base.OnCreateOptionsMenu(main);
+      MenuInflater.Inflate(Resource.Menu.main, menu);
+      return base.OnCreateOptionsMenu(menu);
     }
 
 
@@ -72,6 +72,7 @@ namespace FiveMinuteMeeting.Droid
           StartActivity(intent);
           break;
       }
+      return base.OnOptionsItemSelected(item);
     }
 
     

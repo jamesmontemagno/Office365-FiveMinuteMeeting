@@ -21,6 +21,7 @@ namespace FiveMinuteMeeting.Droid
   {
     public static DetailsViewModel ViewModel { get; set; }
     private ImageLoader loader;
+    ImageView photo;
     protected override void OnCreate(Bundle bundle)
     {
       base.OnCreate(bundle);
@@ -35,7 +36,7 @@ namespace FiveMinuteMeeting.Droid
       var phone = FindViewById<EditText>(Resource.Id.phone);
       var firstName = FindViewById<EditText>(Resource.Id.first_name);
       var lastName = FindViewById<EditText>(Resource.Id.last_name);
-      var photo = FindViewById<ImageView>(Resource.Id.photo);
+      photo = FindViewById<ImageView>(Resource.Id.photo);
 
       if (ViewModel == null)
       {
@@ -43,23 +44,30 @@ namespace FiveMinuteMeeting.Droid
       }
       else
       {
-        ActionBar.Title = ViewModel.FirstName;
+        ActionBar.Title = ViewModel.FirstName + " " + ViewModel.LastName;
         email.Text = "134" + ViewModel.Email;
         firstName.Text = ViewModel.FirstName;
         lastName.Text = ViewModel.LastName;
         phone.Text = ViewModel.Phone;
-        Koush.UrlImageViewHelper.SetUrlDrawable(photo, ViewModel.Email, Resource.Drawable.missing);
-
+       
         //loader.DisplayImage(Gravatar.GetURL(ViewModel.Email, 88), photo, Resource.Drawable.missing);
       }
       
     }
 
-
-    public override bool OnCreateOptionsMenu(IMenu main)
+    protected override void OnResume()
     {
-	    MenuInflater.Inflate(Resource.Menu.detail, main);
-	    return base.OnCreateOptionsMenu(main);
+      base.OnResume();
+      if(!string.IsNullOrWhiteSpace(ViewModel.Email))
+        Koush.UrlImageViewHelper.SetUrlDrawable(photo, ViewModel.Email, Resource.Drawable.missing);
+
+    }
+
+
+    public override bool OnCreateOptionsMenu(IMenu menu)
+    {
+      MenuInflater.Inflate(Resource.Menu.detail, menu);
+      return base.OnCreateOptionsMenu(menu);
     }
 
 

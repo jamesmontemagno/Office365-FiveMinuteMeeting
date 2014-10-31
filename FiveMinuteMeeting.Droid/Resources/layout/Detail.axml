@@ -14,7 +14,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:padding="8dp">
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -59,7 +60,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3" />
+                android:id="@+id/textView3"
+                android:layout_marginTop="8dp" />
             <EditText
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"

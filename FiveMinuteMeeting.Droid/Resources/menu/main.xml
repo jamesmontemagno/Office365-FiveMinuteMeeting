@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<main xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
   <!--Update strings and icons-->
   <item android:id="@+id/add"
@@ -8,5 +8,5 @@
 	      android:showAsAction="always"/>
 
 
-</main>
+</menu>
 
