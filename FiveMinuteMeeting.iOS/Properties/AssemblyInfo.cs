@@ -34,4 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: Microsoft.Office365.OAuth.ClientId(ClientId = "7d679411-3b49-47cb-8663-05c0bdd8cdb6", AuthorizationUri = "https://login.windows.net/", RedirectUri = "http://localhost/e43de5a76e404eab0d9cb4527d18231f")]

@@ -131,8 +131,9 @@ namespace FiveMinuteMeeting.Droid
 			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_unpinnedDrawable = global::FiveMinuteMeeting.Droid.Resource.Styleable.ProgressButton_unpinnedDrawable;
 			global::com.refractored.monodroidtoolkit.Resource.Styleable.Theme = global::FiveMinuteMeeting.Droid.Resource.Styleable.Theme;
 			global::com.refractored.monodroidtoolkit.Resource.Styleable.Theme_circularProgressBarStyle = global::FiveMinuteMeeting.Droid.Resource.Styleable.Theme_circularProgressBarStyle;
-			global::Microsoft.Office365.OAuth.Resource.String.ApplicationName = global::FiveMinuteMeeting.Droid.Resource.String.ApplicationName;
-			global::Microsoft.Office365.OAuth.Resource.String.Hello = global::FiveMinuteMeeting.Droid.Resource.String.Hello;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::FiveMinuteMeeting.Droid.Resource.Id.agentWebView;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::FiveMinuteMeeting.Droid.Resource.Layout.WebAuthenticationBroker;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::FiveMinuteMeeting.Droid.Resource.String.ApplicationName;
 			global::Refractored.Xam.Messages.Resource.String.ApplicationName = global::FiveMinuteMeeting.Droid.Resource.String.ApplicationName;
 			global::Refractored.Xam.Messages.Resource.String.Hello = global::FiveMinuteMeeting.Droid.Resource.String.Hello;
 		}
@@ -423,14 +424,17 @@ namespace FiveMinuteMeeting.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a001f
-			public const int add = 2131361823;
+			// aapt resource value: 0x7f0a0020
+			public const int add = 2131361824;
+			
+			// aapt resource value: 0x7f0a001d
+			public const int agentWebView = 2131361821;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int bottom = 2131361792;
 			
-			// aapt resource value: 0x7f0a001d
-			public const int calendar = 2131361821;
+			// aapt resource value: 0x7f0a001e
+			public const int calendar = 2131361822;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int center = 2131361793;
@@ -495,8 +499,8 @@ namespace FiveMinuteMeeting.Droid
 			// aapt resource value: 0x7f0a000c
 			public const int right = 2131361804;
 			
-			// aapt resource value: 0x7f0a001e
-			public const int save = 2131361822;
+			// aapt resource value: 0x7f0a001f
+			public const int save = 2131361823;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int start = 2131361805;
@@ -562,6 +566,9 @@ namespace FiveMinuteMeeting.Droid
 			
 			// aapt resource value: 0x7f030003
 			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int WebAuthenticationBroker = 2130903044;
 			
 			static Layout()
 			{

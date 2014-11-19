@@ -28,4 +28,3 @@ using Android.App;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: Microsoft.Office365.OAuth.ClientId(ClientId = "d28f10ff-6918-4d91-8e82-28a0aaa01c81", AuthorizationUri = "https://login.windows.net/", RedirectUri = "http://localhost/d86357ef5e704a5dedab71d63a81b250")]

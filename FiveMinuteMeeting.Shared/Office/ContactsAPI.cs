@@ -5,7 +5,6 @@ using System.Text;
 
 using Microsoft.Office365.OutlookServices;
 using System.Threading.Tasks;
-using Microsoft.Office365.OAuth;
 
 namespace FiveMinuteMeeting.Shared
 {
@@ -14,9 +13,10 @@ namespace FiveMinuteMeeting.Shared
     
     public static async Task<IEnumerable<IContact>> GetContacts()
     {
-     
+
+      var client = await Client.GetContactsClient();
       // Obtain first page of contacts
-      var contactsResults = await (from i in Client.Instance.Me.Contacts
+      var contactsResults = await (from i in client.Me.Contacts
                                    orderby i.Surname
                                    select i).Take(100).ExecuteAsync();
 
@@ -38,7 +38,8 @@ namespace FiveMinuteMeeting.Shared
       try
       {
         contact.FileAs = contact.Surname + ", " + contact.GivenName;
-        await Client.Instance.Me.Contacts.AddContactAsync(contact);
+        var client = await Client.GetContactsClient();
+        await client.Me.Contacts.AddContactAsync(contact);
       }
       catch(Exception ex)
       {
@@ -62,8 +63,9 @@ namespace FiveMinuteMeeting.Shared
           }
         }
       };
-
-      await Client.Instance.Me.SendMailAsync(message, true);
+      var client = await Client.GetContactsClient();
+     
+      await client.Me.SendMailAsync(message, true);
     }
   }
 }

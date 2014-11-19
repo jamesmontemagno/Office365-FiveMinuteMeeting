@@ -8,6 +8,7 @@ using Android.OS;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 using Android.Support.V4.Widget;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace FiveMinuteMeeting.Droid
 {
@@ -25,10 +26,8 @@ namespace FiveMinuteMeeting.Droid
       SetContentView(Resource.Layout.Main);
 
       refresher = FindViewById<SwipeRefreshLayout>(Resource.Id.refresher);
-      refresher.SetColorScheme(Resource.Color.blue,
-                                Resource.Color.white,
-                                Resource.Color.blue,
-                                Resource.Color.white);
+      refresher.SetColorScheme(Resource.Color.blue);
+      
       refresher.Refresh += async delegate
       {
         if(viewModel.IsBusy)
@@ -42,8 +41,14 @@ namespace FiveMinuteMeeting.Droid
       ListAdapter = new ContactAdapter(this, viewModel);
 
       ListView.ItemLongClick += ListView_ItemLongClick;
-      await Client.EnsureClientCreated(this);
+
+      Client.AuthorizationParams = new AuthorizationParameters(this);
+      
       viewModel.GetContactsAsync();
+      refresher.PostDelayed(() =>
+      {
+        refresher.Refreshing = true;
+      }, 1000);
     }
 
     async void ListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
@@ -85,15 +90,20 @@ namespace FiveMinuteMeeting.Droid
       return base.OnOptionsItemSelected(item);
     }
 
+    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+    {
+      base.OnActivityResult(requestCode, resultCode, data);
+      AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
+    }
     
 
     protected async override void OnResume()
     {
       base.OnResume();
 
-      if(Client.Instance != null && viewModel.Contacts.Count == 0)
+      if(viewModel.Contacts.Count == 0)
         viewModel.GetContactsAsync();
-      else if (Client.Instance != null)
+      else 
         RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
     }
 

@@ -5,7 +5,6 @@ using System.Text;
 
 using Microsoft.Office365.OutlookServices;
 using System.Threading.Tasks;
-using Microsoft.Office365.OAuth;
 
 namespace FiveMinuteMeeting.Shared
 {
@@ -47,11 +46,9 @@ namespace FiveMinuteMeeting.Shared
        
         try
         {
-         
-          Client.Instance.Me.Events.AddEventAsync(calendarEvent).ContinueWith((action) =>
-            {
-              var result = action.AsyncState;
-            });
+          var client = await Client.GetContactsClient();
+
+          await client.Me.Events.AddEventAsync(calendarEvent);
         }
         catch(Exception ex)
         {
@@ -66,9 +63,10 @@ namespace FiveMinuteMeeting.Shared
 
       public static async Task<IEnumerable<IEvent>> GetEventsAsync()
       {
-
+        var client = await Client.GetContactsClient();
+     
         // Obtain first page of events
-        var calResults = await (from i in Client.Instance.Me.Calendars.GetById("Calendar").Events
+        var calResults = await (from i in client.Me.Calendars.GetById("Calendar").Events
                                 orderby i.Start     
                                 select i).Take(100).ExecuteAsync();
 

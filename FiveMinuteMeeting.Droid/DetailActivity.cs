@@ -75,10 +75,10 @@ namespace FiveMinuteMeeting.Droid
     {
 	    switch (item.ItemId) {
 	    case Resource.Id.calendar:
-          //TODO:Calendar
+          ViewModel.AddEvent(ViewModel.Email, ViewModel.FirstName);
 		    break;
 	    case Resource.Id.save:
-          //TODO:Save
+        ViewModel.SaveContact();
 		    break;
       case Resource.Id.phone:
           var uri = Android.Net.Uri.Parse ("tel:" + ViewModel.Phone);

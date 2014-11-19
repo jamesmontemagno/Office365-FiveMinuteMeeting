@@ -7,6 +7,7 @@ using FiveMinuteMeeting.Shared;
 using System.Linq;
 using SDWebImage;
 using MonoTouch.CoreGraphics;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace FiveMinuteMeeting.iOS
 {
@@ -66,8 +67,7 @@ namespace FiveMinuteMeeting.iOS
         return;
       }
        
-
-      await Client.EnsureClientCreated(this);
+      Client.AuthorizationParams = new AuthorizationParameters(this);
       await viewModel.GetContactsAsync();
       TableView.ReloadData();
     }
