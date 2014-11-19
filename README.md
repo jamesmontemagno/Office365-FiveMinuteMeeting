@@ -3,6 +3,11 @@ Five Minute Meeting - TechEd Europe Sample
 
 Office 365 Contact browser, editor, and ability meetings to your calendar and organize your contacts as well.
 
+## WARNING
+This sample is using a preview edition of ADAL and it has been noted that there will be breaking changes in the future. So please be aware of that. See this blog for more details: http://www.cloudidentity.com/blog/2014/10/30/adal-net-v3-preview-pcl-xamarin-support/
+
+Additionally, for more Office 365 APIs see their GitHub: http://github.com/officedev
+
 
 ### Get Help
 
