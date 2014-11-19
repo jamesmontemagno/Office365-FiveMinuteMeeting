@@ -22,6 +22,7 @@ namespace FiveMinuteMeeting.Droid
     public static DetailsViewModel ViewModel { get; set; }
     private ImageLoader loader;
     ImageView photo;
+    EditText email, phone, firstName, lastName;
     protected override void OnCreate(Bundle bundle)
     {
       base.OnCreate(bundle);
@@ -32,10 +33,10 @@ namespace FiveMinuteMeeting.Droid
       ActionBar.SetDisplayShowHomeEnabled(true);
       loader = new ImageLoader(this);
 
-      var email = FindViewById<EditText>(Resource.Id.email);
-      var phone = FindViewById<EditText>(Resource.Id.phone);
-      var firstName = FindViewById<EditText>(Resource.Id.first_name);
-      var lastName = FindViewById<EditText>(Resource.Id.last_name);
+      email = FindViewById<EditText>(Resource.Id.email);
+      phone = FindViewById<EditText>(Resource.Id.phone);
+      firstName = FindViewById<EditText>(Resource.Id.first_name);
+      lastName = FindViewById<EditText>(Resource.Id.last_name);
       photo = FindViewById<ImageView>(Resource.Id.photo2);
 
       if (ViewModel == null)
@@ -50,7 +51,6 @@ namespace FiveMinuteMeeting.Droid
         lastName.Text = ViewModel.LastName;
         phone.Text = ViewModel.Phone;
        
-        //loader.DisplayImage(Gravatar.GetURL(ViewModel.Email, 88), photo, Resource.Drawable.missing);
       }
       
     }
@@ -78,7 +78,15 @@ namespace FiveMinuteMeeting.Droid
           ViewModel.AddEvent(ViewModel.Email, ViewModel.FirstName);
 		    break;
 	    case Resource.Id.save:
-        ViewModel.SaveContact();
+        ViewModel.FirstName = firstName.Text.Trim();
+        ViewModel.LastName = lastName.Text.Trim();
+        ViewModel.Email = email.Text.Trim();
+        ViewModel.Phone = phone.Text.Trim();
+        ViewModel.SaveContact().ContinueWith((result)=>
+          {
+            if (result.Exception == null)
+              Finish();
+          });
 		    break;
       case Resource.Id.phone:
           var uri = Android.Net.Uri.Parse ("tel:" + ViewModel.Phone);
@@ -86,17 +94,17 @@ namespace FiveMinuteMeeting.Droid
           StartActivity (intent);  
         break;
       case Resource.Id.email:
-        var email = new Intent(Android.Content.Intent.ActionSend);
-          email.PutExtra (Android.Content.Intent.ExtraEmail, 
-          new string[]{ViewModel.Email} );
+          var emailIntent = new Intent(Android.Content.Intent.ActionSend);
+          emailIntent.PutExtra(Android.Content.Intent.ExtraEmail, 
+            new string[]{ViewModel.Email} );
 
-          email.PutExtra (Android.Content.Intent.ExtraSubject,
-            "5 Minute Meeting");
+          emailIntent.PutExtra(Android.Content.Intent.ExtraSubject,
+              "5 Minute Meeting");
 
-          email.PutExtra (Android.Content.Intent.ExtraText, 
-          "We are having a 5 minute stand up tomorrow at this time! Check your calendar.");
-          email.SetType("message/rfc822");
-          StartActivity(email);
+          emailIntent.PutExtra(Android.Content.Intent.ExtraText, 
+            "We are having a 5 minute stand up tomorrow at this time! Check your calendar.");
+          emailIntent.SetType("message/rfc822");
+          StartActivity(emailIntent);
         break;
         case Android.Resource.Id.Home:
         Finish();

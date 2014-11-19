@@ -5,6 +5,7 @@ using System.Text;
 
 using Microsoft.Office365.OutlookServices;
 using System.Threading.Tasks;
+using Refractored.Xam.Messages;
 
 namespace FiveMinuteMeeting.Shared
 {
@@ -43,6 +44,8 @@ namespace FiveMinuteMeeting.Shared
       }
       catch(Exception ex)
       {
+        var message = new Messages();
+        message.ShowMessage("Unable to save contact.");
         return false;
       }
       return true;

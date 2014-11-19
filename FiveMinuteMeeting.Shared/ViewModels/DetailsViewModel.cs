@@ -85,19 +85,20 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
     public async Task SaveContact()
     {
-      bool newContact = (Contact == null);
-      //add new contact
-      if(newContact)
-      {
-        Contact = new Contact();
-      }
-
-        Contact.GivenName = FirstName;
-        Contact.Surname = LastName;
-        Contact.MobilePhone1 = Phone;
-        if(Contact.EmailAddresses.Count == 0)
+        var contact = Contact;
+        bool newContact = (Contact == null);
+        //add new contact
+        if(newContact)
         {
-          Contact.EmailAddresses.Add(new EmailAddress
+          contact = new Contact();
+        }
+
+        contact.GivenName = FirstName;
+        contact.Surname = LastName;
+        contact.MobilePhone1 = Phone;
+        if (contact.EmailAddresses.Count == 0)
+        {
+          contact.EmailAddresses.Add(new EmailAddress
             {
               Address = Email,
               Name = FirstName  + " " + LastName
@@ -105,17 +106,18 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         }
         else
         {
-          Contact.EmailAddresses[0].Address = Email;
+          contact.EmailAddresses[0].Address = Email;
         }
 
         if (newContact)
         {
-          await ContactsAPI.AddContact(Contact);
-          App.ContactsViewModel.AddContact(Contact);
+          await ContactsAPI.AddContact(contact);
+          App.ContactsViewModel.AddContact(contact);
+          Contact = contact;
         }
         else
         {
-          await ContactsAPI.UpdateContact(Contact);
+          await ContactsAPI.UpdateContact(contact);
         }
     }
 
