@@ -1,12 +1,12 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
-using MonoTouch.MessageUI;
+using MessageUI;
 using Microsoft.Office365.OutlookServices;
 using FiveMinuteMeeting.Shared.ViewModels;
-using MonoTouch.CoreGraphics;
-using System.Drawing;
+using CoreGraphics;
+using CoreGraphics;
 using FiveMinuteMeeting.Shared;
 using SDWebImage;
 
@@ -70,7 +70,7 @@ namespace FiveMinuteMeeting.iOS
        NSNotificationCenter.DefaultCenter.AddObserver
        (UIKeyboard.WillHideNotification, KeyBoardDownNotification);
 
-       double min = Math.Min(ImagePhoto.Frame.Width, ImagePhoto.Frame.Height);
+       double min = Math.Min((float)ImagePhoto.Frame.Width, (float)ImagePhoto.Frame.Height);
        ImagePhoto.Layer.CornerRadius = (float)(min / 2.0);
        ImagePhoto.Layer.MasksToBounds = false;
        ImagePhoto.Layer.BorderColor = new CGColor(1, 1, 1);
@@ -88,7 +88,7 @@ namespace FiveMinuteMeeting.iOS
       else
       {
         this.Title = ViewModel.FirstName;
-        TextEmail.Text = "134"+ViewModel.Email;
+        TextEmail.Text = ViewModel.Email;
         TextFirst.Text = ViewModel.FirstName;
         TextLast.Text = ViewModel.LastName;
         TextPhone.Text = ViewModel.Phone;
@@ -117,7 +117,7 @@ namespace FiveMinuteMeeting.iOS
 
       alertPrompt.Dismissed += (sender, e) =>
       {
-        if (e.ButtonIndex >= alertPrompt.FirstOtherButtonIndex)
+        if ((int)e.ButtonIndex >= (int)alertPrompt.FirstOtherButtonIndex)
         {
           
           var url = new NSUrl("tel:" + TextPhone.Text);
@@ -152,7 +152,7 @@ namespace FiveMinuteMeeting.iOS
       mailController.Finished += (object s, MFComposeResultEventArgs args) =>
       {
         Console.WriteLine(args.Result.ToString());
-        args.Controller.DismissViewController(true, null);
+        args.Controller.DismissViewController(true, (Action)null);
       };
 
       PresentViewControllerAsync(mailController, true);
@@ -183,7 +183,7 @@ namespace FiveMinuteMeeting.iOS
       UIView.BeginAnimations(string.Empty, System.IntPtr.Zero);
       UIView.SetAnimationDuration(0.3);
 
-      RectangleF frame = View.Frame;
+      CGRect frame = (CGRect)View.Frame;
 
       if (move)
       {
@@ -202,7 +202,7 @@ namespace FiveMinuteMeeting.iOS
     private void KeyBoardUpNotification(NSNotification notification)
     {
       // get the keyboard size
-      var r = UIKeyboard.FrameBeginFromNotification(notification);
+      var r = (CGRect)UIKeyboard.FrameBeginFromNotification((NSNotification)notification);
 
 
       // Find what opened the keyboard
@@ -213,10 +213,10 @@ namespace FiveMinuteMeeting.iOS
       }
 
       // Bottom of the controller = initial position + height + offset      
-      bottom = (activeview.Frame.Y + activeview.Frame.Height + Offset);
+      bottom = ((float)activeview.Frame.Y + (float)activeview.Frame.Height + Offset);
 
       // Calculate how far we need to scroll
-      scrollamount = (r.Height - (View.Frame.Size.Height - bottom));
+      scrollamount = ((float)r.Height - ((float)View.Frame.Size.Height - bottom));
 
       // Perform the scrolling
       if (scrollamount > 0)

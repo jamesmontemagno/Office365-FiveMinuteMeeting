@@ -9,15 +9,17 @@ using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 using Android.Support.V4.Widget;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Android.Support.V7.App;
 
 namespace FiveMinuteMeeting.Droid
 {
   [Activity(Label = "My Team", MainLauncher = true, Icon = "@drawable/ic_launcher")]
-  public class MainActivity : ListActivity
+  public class MainActivity : ActionBarActivity
   {
 
     private ContactsViewModel viewModel = App.ContactsViewModel;
     private SwipeRefreshLayout refresher;
+    private ListView listView;
 
     protected async override void OnCreate(Bundle bundle)
     {
@@ -34,13 +36,17 @@ namespace FiveMinuteMeeting.Droid
           return;
 
         await viewModel.GetContactsAsync();
-        RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
+        RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
       };
 
       viewModel.PropertyChanged += PropertyChanged;
-      ListAdapter = new ContactAdapter(this, viewModel);
 
-      ListView.ItemLongClick += ListView_ItemLongClick;
+      listView = FindViewById<ListView>(Resource.Id.list);
+
+      listView.Adapter = new ContactAdapter(this, viewModel);
+
+      listView.ItemLongClick += ListViewItemLongClick;
+      listView.ItemClick += ListViewItemClick;
 
       Client.AuthorizationParams = new AuthorizationParameters(this);
       
@@ -51,22 +57,19 @@ namespace FiveMinuteMeeting.Droid
       }, 1000);
     }
 
-    async void ListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+    void ListViewItemClick(object sender, AdapterView.ItemClickEventArgs e)
     {
-      await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
-      RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
-    }
-
-
-
-    protected override void OnListItemClick(ListView l, View v, int position, long id)
-    {
-      base.OnListItemClick(l, v, position, id);
-      var contact = viewModel.Contacts[position];
+      var contact = viewModel.Contacts[e.Position];
       var vm = new DetailsViewModel(contact);
       DetailActivity.ViewModel = vm;
       var intent = new Intent(this, typeof(DetailActivity));
       StartActivity(intent);
+    }
+
+    async void ListViewItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+    {
+      await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
+      RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
     }
 
 
@@ -103,8 +106,8 @@ namespace FiveMinuteMeeting.Droid
 
       if(viewModel.Contacts.Count == 0)
         viewModel.GetContactsAsync();
-      else 
-        RunOnUiThread(() => { ((BaseAdapter)ListAdapter).NotifyDataSetChanged(); });
+      else
+        RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
     }
 
     void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -116,7 +119,7 @@ namespace FiveMinuteMeeting.Droid
           case "IsBusy":
             {
               refresher.Refreshing = viewModel.IsBusy;
-              ((BaseAdapter)ListAdapter).NotifyDataSetChanged();
+              ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
             }
             break;
         }

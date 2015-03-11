@@ -1,6 +1,5 @@
-﻿using FiveMinuteMeeting.Shared.Helpers;
+using FiveMinuteMeeting.Shared.Helpers;
 using Microsoft.Office365.OutlookServices;
-using Refractored.Xam.Messages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,8 +49,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         }
         catch(Exception ex)
         {
-          var message = new Messages();
-          message.ShowMessage("Unable to gather events.");
+          //add pop up here for error
         }
         finally
         {

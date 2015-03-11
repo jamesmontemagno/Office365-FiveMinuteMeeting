@@ -5,13 +5,13 @@
 // Manual changes to this file will not be maintained.
 //
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
 
 namespace FiveMinuteMeeting.iOS
 {
-	[Register ("ContactsViewController")]
+	[Foundation.Register("ContactsViewController")]
 	partial class ContactsViewController
 	{
 		void ReleaseDesignerOutlets ()

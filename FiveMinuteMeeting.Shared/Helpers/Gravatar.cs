@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 #if __IOS__
-using MonoTouch.Foundation;
+using Foundation;
 #endif
 
 namespace FiveMinuteMeeting.Shared

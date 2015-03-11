@@ -11,16 +11,16 @@ using Android.Views;
 using Android.Widget;
 using Android.Content.PM;
 using FiveMinuteMeeting.Shared.ViewModels;
-using com.refractored.monodroidtoolkit.imageloader;
 using FiveMinuteMeeting.Shared;
+using Android.Support.V7.App;
+
 
 namespace FiveMinuteMeeting.Droid
 {
   [Activity(Label = "New Contact", Icon="@drawable/ic_launcher", UiOptions = UiOptions.SplitActionBarWhenNarrow)]
-  public class DetailActivity : Activity
+  public class DetailActivity : ActionBarActivity
   {
     public static DetailsViewModel ViewModel { get; set; }
-    private ImageLoader loader;
     ImageView photo;
     EditText email, phone, firstName, lastName;
     protected override void OnCreate(Bundle bundle)
@@ -29,9 +29,8 @@ namespace FiveMinuteMeeting.Droid
       SetContentView(Resource.Layout.Detail);
 
 
-      ActionBar.SetDisplayHomeAsUpEnabled(true);
-      ActionBar.SetDisplayShowHomeEnabled(true);
-      loader = new ImageLoader(this);
+      SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+      SupportActionBar.SetDisplayShowHomeEnabled(true);
 
       email = FindViewById<EditText>(Resource.Id.email);
       phone = FindViewById<EditText>(Resource.Id.phone);
@@ -45,8 +44,8 @@ namespace FiveMinuteMeeting.Droid
       }
       else
       {
-        ActionBar.Title = ViewModel.FirstName + " " + ViewModel.LastName;
-        email.Text = "134" + ViewModel.Email;
+        SupportActionBar.Title = ViewModel.FirstName + " " + ViewModel.LastName;
+        email.Text = ViewModel.Email;
         firstName.Text = ViewModel.FirstName;
         lastName.Text = ViewModel.LastName;
         phone.Text = ViewModel.Phone;

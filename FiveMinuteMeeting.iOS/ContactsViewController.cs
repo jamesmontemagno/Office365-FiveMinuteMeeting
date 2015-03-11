@@ -1,12 +1,12 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 using System.Linq;
 using SDWebImage;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace FiveMinuteMeeting.iOS
@@ -25,7 +25,7 @@ namespace FiveMinuteMeeting.iOS
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
-      activityIndicator = new UIActivityIndicatorView(new System.Drawing.RectangleF(0,0,20,20));
+      activityIndicator = new UIActivityIndicatorView(new CoreGraphics.CGRect(0,0,20,20));
       activityIndicator.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.White;
       activityIndicator.HidesWhenStopped = true;
       NavigationItem.LeftBarButtonItem = new UIBarButtonItem(activityIndicator);
@@ -111,19 +111,19 @@ namespace FiveMinuteMeeting.iOS
         return viewModel.ContactsGrouped.Select(s => s.Key).ToArray();
       }
 
-      public override int RowsInSection(UITableView tableview, int section)
+      public override nint RowsInSection(UITableView tableview, nint section)
       {
-        return viewModel.ContactsGrouped[section].Count;
+        return (nint)viewModel.ContactsGrouped[(int)section].Count;
       }
 
-      public override int NumberOfSections(UITableView tableView)
+      public override nint NumberOfSections(UITableView tableView)
       {
-        return viewModel.ContactsGrouped.Count;
+        return (nint)viewModel.ContactsGrouped.Count;
       }
 
-      public override string TitleForHeader(UITableView tableView, int section)
+      public override string TitleForHeader(UITableView tableView, nint section)
       {
-        return viewModel.ContactsGrouped[section].Key;
+        return viewModel.ContactsGrouped[(int)section].Key;
       }
 
       public override UITableViewCellEditingStyle EditingStyleForRow(UITableView tableView, NSIndexPath indexPath)

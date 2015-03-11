@@ -1,5 +1,4 @@
-﻿using Microsoft.Office365.OutlookServices;
-using Refractored.Xam.Messages;
+using Microsoft.Office365.OutlookServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,8 +66,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
     public async Task AddEvent(string email, string name)
     {
       await CalendarAPI.AddEvent(DateTime.Now.AddDays(1), email, name);
-      var message = new Messages();
-      message.ShowMessage("Event added to calendar.");
+      //add message here
     }
 
     public async Task SendEmail()
@@ -77,9 +75,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         "Meeting tomorrow",
         "Don't forget about our meeting tomorrow.");
 
-
-      var messages = new Messages();
-      messages.ShowMessage("Email Sent!");
+      //Add Popup here
     }
 
 

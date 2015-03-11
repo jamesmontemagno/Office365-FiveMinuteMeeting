@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace FiveMinuteMeeting.iOS
 {
   // The UIApplicationDelegate for the application. This class is responsible for launching the 
   // User Interface of the application, as well as listening (and optionally responding) to 
   // application events from iOS.
-  [Register("AppDelegate")]
+  [Foundation.Register("AppDelegate")]
   public partial class AppDelegate : UIApplicationDelegate
   {
     // class-level declarations
@@ -27,7 +27,7 @@ namespace FiveMinuteMeeting.iOS
       UINavigationBar.Appearance.TintColor = UIColor.White; //Tint color of button items
       UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
       {
-        Font = UIFont.FromName("HelveticaNeue-Light", 20f),
+        Font = UIFont.FromName("HelveticaNeue-Light", (nfloat)20f),
         TextColor = UIColor.White
       });
       return true;

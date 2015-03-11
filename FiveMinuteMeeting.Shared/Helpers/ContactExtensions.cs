@@ -1,4 +1,4 @@
-﻿using Microsoft.Office365.OutlookServices;
+using Microsoft.Office365.OutlookServices;
 using System;
 using System.Collections.Generic;
 using System.Text;

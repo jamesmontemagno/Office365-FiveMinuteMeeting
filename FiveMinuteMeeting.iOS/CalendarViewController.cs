@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
 using FiveMinuteMeeting.Shared.ViewModels;
 
@@ -20,7 +20,7 @@ namespace FiveMinuteMeeting.iOS
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
-      activityIndicator = new UIActivityIndicatorView(new System.Drawing.RectangleF(0, 0, 20, 20));
+      activityIndicator = new UIActivityIndicatorView(new CoreGraphics.CGRect(0, 0, 20, 20));
       activityIndicator.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.White;
       activityIndicator.HidesWhenStopped = true;
       NavigationItem.RightBarButtonItem = new UIBarButtonItem(activityIndicator);
@@ -87,9 +87,9 @@ namespace FiveMinuteMeeting.iOS
         this.viewModel = viewModel;
       }
 
-      public override int RowsInSection(UITableView tableview, int section)
+      public override nint RowsInSection(UITableView tableview, nint section)
       {
-        return viewModel.Events.Count;
+        return (nint)viewModel.Events.Count;
       }
 
       public override UITableViewCellEditingStyle EditingStyleForRow(UITableView tableView, NSIndexPath indexPath)

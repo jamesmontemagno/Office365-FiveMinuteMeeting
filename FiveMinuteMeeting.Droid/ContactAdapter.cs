@@ -12,7 +12,6 @@ using Android.Widget;
 using Microsoft.Office365.OutlookServices;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
-using com.refractored.monodroidtoolkit.imageloader;
 
 namespace FiveMinuteMeeting.Droid
 {
@@ -26,12 +25,10 @@ namespace FiveMinuteMeeting.Droid
   {
     private ContactsViewModel viewModel;
     private Activity context;
-    private ImageLoader imageLoader;
     public ContactAdapter(Activity context, ContactsViewModel viewModel)
     {
       this.viewModel = viewModel;
       this.context = context;
-      imageLoader = new ImageLoader(context);
     }
     public override View GetView(int position, View convertView, ViewGroup parent)
     {
@@ -56,8 +53,6 @@ namespace FiveMinuteMeeting.Droid
       wrapper.Phone.Text = contact.MobilePhone1;
       Koush.UrlImageViewHelper.SetUrlDrawable(wrapper.Photo, Gravatar.GetURL(contact.EmailAddresses[0].Address, 88), Resource.Drawable.missing);
 
-      //imageLoader.DisplayImage(Gravatar.GetURL(contact.EmailAddresses[0].Address, 44), wrapper.Photo, Resource.Drawable.missing);
-     
       return view;
     }
 
