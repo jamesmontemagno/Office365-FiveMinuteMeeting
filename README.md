@@ -1,4 +1,4 @@
-Five Minute Meeting - TechEd Europe Sample
+Five Minute Meeting - Office 365 and Xamarin Sample
 =========================
 
 Office 365 Contact browser, editor, and ability meetings to your calendar and organize your contacts as well.
