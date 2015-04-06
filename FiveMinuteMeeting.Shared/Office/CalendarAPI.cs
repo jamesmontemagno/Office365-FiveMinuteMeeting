@@ -24,6 +24,9 @@ namespace FiveMinuteMeeting.Shared
 
         for (int i = 0; i < emails.Length; i++)
         {
+          if (string.IsNullOrWhiteSpace(emails[i]) || string.IsNullOrWhiteSpace(names[i]))
+            continue;
+
           calendarEvent.Attendees.Add(new Attendee
             {
               EmailAddress = new EmailAddress

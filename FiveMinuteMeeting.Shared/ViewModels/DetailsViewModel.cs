@@ -1,3 +1,4 @@
+using FiveMinuteMeeting.Shared.Office;
 using Microsoft.Office365.OutlookServices;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
     public async Task SendEmail()
     {
-      await ContactsAPI.SendEmail(Email, FirstName + " " + LastName,
+      await MailAPI.SendEmail(Email, FirstName + " " + LastName,
         "Meeting tomorrow",
         "Don't forget about our meeting tomorrow.");
 

@@ -28,7 +28,7 @@ namespace FiveMinuteMeeting.iOS
       activityIndicator = new UIActivityIndicatorView(new CoreGraphics.CGRect(0, 0, 20, 20));
       activityIndicator.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.White;
       activityIndicator.HidesWhenStopped = true;
-      NavigationItem.RightBarButtonItem = new UIBarButtonItem(activityIndicator);
+      NavigationItem.LeftBarButtonItem = new UIBarButtonItem(activityIndicator);
       RefreshControl.ValueChanged += async (sender, args) =>
       {
         if (viewModel.IsBusy)

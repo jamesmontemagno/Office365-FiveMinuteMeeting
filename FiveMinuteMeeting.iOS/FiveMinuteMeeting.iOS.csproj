@@ -113,6 +113,10 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="SendEmailViewController.cs" />
+    <Compile Include="SendEmailViewController.designer.cs">
+      <DependentUpon>SendEmailViewController.cs</DependentUpon>
+    </Compile>
     <None Include="app.config" />
     <None Include="Info.plist" />
     <Compile Include="NewEventDateViewController.cs" />

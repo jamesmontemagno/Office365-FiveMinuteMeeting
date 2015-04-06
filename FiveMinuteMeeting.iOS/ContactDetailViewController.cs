@@ -61,7 +61,7 @@ namespace FiveMinuteMeeting.iOS
 
 
        ButtonCall.Clicked += (sender, args) => PlaceCall();
-       ButtonEmail.Clicked += (sender, args) => SendEmail();
+       //ButtonEmail.Clicked += (sender, args) => SendEmail();
 
        NSNotificationCenter.DefaultCenter.AddObserver
         (UIKeyboard.DidShowNotification, KeyBoardUpNotification);
@@ -138,7 +138,7 @@ namespace FiveMinuteMeeting.iOS
     }
 
 
-    private async void SendEmail()
+    /*private async void SendEmail()
     {
       var mailController = new MFMailComposeViewController();
 
@@ -154,14 +154,29 @@ namespace FiveMinuteMeeting.iOS
 
       PresentViewControllerAsync(mailController, true);
      
-    }
+    }*/
 
     public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
     {
-      var vc = segue.DestinationViewController as NewEventDurationViewController;
-      vc.ViewModel.FirstName = ViewModel.FirstName;
-      vc.ViewModel.LastName = ViewModel.LastName;
-      vc.ViewModel.Email = ViewModel.Email;
+      switch(segue.Identifier)
+      {
+        case "email":
+          {
+            var vc = segue.DestinationViewController as SendEmailViewController;
+            vc.ViewModel.FirstName = ViewModel.FirstName;
+            vc.ViewModel.LastName = ViewModel.LastName;
+            vc.ViewModel.Email = ViewModel.Email;
+          }
+          break;
+        case "meeting":
+          {
+            var vc = segue.DestinationViewController as NewEventDurationViewController;
+            vc.ViewModel.FirstName = ViewModel.FirstName;
+            vc.ViewModel.LastName = ViewModel.LastName;
+            vc.ViewModel.Email = ViewModel.Email;
+          }
+          break;
+      }
 
     }
 

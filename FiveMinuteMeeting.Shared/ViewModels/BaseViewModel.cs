@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace FiveMinuteMeeting.Shared.ViewModels
@@ -9,7 +10,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
     {
 
       public event PropertyChangedEventHandler PropertyChanged;
-      public void OnPropertyChanged(string name)
+      public void OnPropertyChanged([CallerMemberName]string name = "")
       {
         if (PropertyChanged == null)
           return;

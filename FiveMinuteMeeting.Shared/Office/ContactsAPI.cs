@@ -49,24 +49,6 @@ namespace FiveMinuteMeeting.Shared
       return true;
     }
 
-    public static async Task SendEmail(string email, string name, string subject, string body)
-    {
-      var message = new Message
-      {
-        Body = new ItemBody { Content = body, ContentType = BodyType.Text },
-        Importance = Importance.High,
-        Subject = subject,
-        ToRecipients = new List<Recipient>
-        {
-          new Recipient
-          {
-            EmailAddress = new EmailAddress{Address = email, Name = name }
-          }
-        }
-      };
-      var client = await Client.GetContactsClient();
-     
-      await client.Me.SendMailAsync(message, true);
-    }
+    
   }
 }

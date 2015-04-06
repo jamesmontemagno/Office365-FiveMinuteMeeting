@@ -82,13 +82,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="76" translatesAutoresizingMaskIntoConstraints="NO"/>
                                     <barButtonItem title="Item" id="107" translatesAutoresizingMaskIntoConstraints="NO" image="calendar.png">
                                         <connections>
-                                            <segue id="604" destination="480" kind="push"/>
+                                            <segue id="604" destination="480" kind="push" identifier="meeting"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="108" translatesAutoresizingMaskIntoConstraints="NO"/>
                                     <barButtonItem title="Item" id="74" translatesAutoresizingMaskIntoConstraints="NO" image="email.png">
                                         <connections>
                                             <action selector="OnEmailClicked:" destination="41" id="83"/>
+                                            <segue id="1428" destination="1374" kind="modal" identifier="email"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -216,7 +217,11 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="My Calendar" id="361" image="tab_calendar.png"/>
                     <navigationItem title="Events" id="891" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem">
-                        <barButtonItem id="892" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem" systemItem="add"/>
+                        <barButtonItem id="892" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem" systemItem="add">
+                            <connections>
+                                <segue id="1335" destination="480" kind="push" identifier="personal"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ButtonNewEvent" destination="892" id="name-outlet-892"/>
@@ -257,37 +262,61 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" id="864" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" id="864" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="176" width="320" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                     <!--2011-07-18 18:00:01 +0000-->
                                 </date>
+                                <constraints>
+                                    <constraint id="1365" firstAttribute="width" constant="320"/>
+                                    <constraint id="1366" firstAttribute="height" constant="216"/>
+                                </constraints>
                             </datePicker>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date &amp; Time" lineBreakMode="tailTruncation" minimumFontSize="10" id="866" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" textAlignment="center">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date &amp; Time" lineBreakMode="tailTruncation" minimumFontSize="10" id="866" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
                                 <rect key="frame" x="0.0" y="118" width="320" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1361" firstAttribute="width" constant="320"/>
+                                    <constraint id="1362" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1267" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="437" width="320" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="Schedule">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonSchedule_TouchUpInside:" destination="373" id="1268" eventType="touchUpInside"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1369" firstAttribute="width" constant="320"/>
+                                    <constraint id="1370" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint id="1359" firstItem="866" firstAttribute="top" secondItem="374" secondAttribute="top" constant="118"/>
+                            <constraint id="1360" firstItem="374" firstAttribute="trailing" secondItem="866" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1363" firstItem="374" firstAttribute="bottom" secondItem="864" secondAttribute="bottom" constant="176"/>
+                            <constraint id="1364" firstItem="374" firstAttribute="trailing" secondItem="864" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1367" firstItem="374" firstAttribute="bottom" secondItem="1267" secondAttribute="bottom" constant="81"/>
+                            <constraint id="1368" firstItem="374" firstAttribute="trailing" secondItem="1267" secondAttribute="trailing" constant="0.0"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="DatePickerDate" destination="864" id="name-outlet-864"/>
-                        <outlet property="ButtonSave" destination="886" id="name-outlet-886"/>
+                        <outlet property="ButtonSchedule" destination="1267" id="name-outlet-1267"/>
                     </connections>
                     <toolbarItems/>
-                    <navigationItem title="Meeting Time" id="885" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem">
-                        <barButtonItem id="886" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem" systemItem="save">
-                            <connections>
-                                <action selector="ButtonSave_Activated:" destination="373" id="888"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem title="Meeting Time" id="885" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="375" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="56"/>
+            <point key="canvasLocation" x="2076" y="716"/>
         </scene>
         <scene sceneID="479">
             <objects>
@@ -302,87 +331,87 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="607" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="230" width="280" height="50"/>
+                                <rect key="frame" x="20" y="259" width="280" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="15 Minutes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="640" firstAttribute="width" constant="280"/>
-                                    <constraint id="641" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <segue id="783" destination="373" kind="push" identifier="fifteen"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="1349" firstAttribute="width" constant="280"/>
+                                    <constraint id="1350" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="617" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="90" width="280" height="50"/>
+                                <rect key="frame" x="20" y="119" width="280" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="5 Minutes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="632" firstAttribute="width" constant="280"/>
-                                    <constraint id="633" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <segue id="695" destination="373" kind="push" identifier="five"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="1341" firstAttribute="width" constant="280"/>
+                                    <constraint id="1342" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="618" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="160" width="280" height="50"/>
+                                <rect key="frame" x="20" y="189" width="280" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="10 Minutes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="636" firstAttribute="width" constant="280"/>
-                                    <constraint id="637" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <segue id="748" destination="373" kind="push" identifier="ten"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="1345" firstAttribute="width" constant="280"/>
+                                    <constraint id="1346" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="619" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="300" width="280" height="50"/>
+                                <rect key="frame" x="20" y="329" width="280" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="30 Minutes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="644" firstAttribute="width" constant="280"/>
-                                    <constraint id="645" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <segue id="821" destination="373" kind="push" identifier="thirty"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="1353" firstAttribute="width" constant="280"/>
+                                    <constraint id="1354" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="620" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="370" width="280" height="50"/>
+                                <rect key="frame" x="20" y="399" width="280" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="60 Minutes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="648" firstAttribute="width" constant="280"/>
-                                    <constraint id="649" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <segue id="862" destination="373" kind="push" identifier="sixty"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="1357" firstAttribute="width" constant="280"/>
+                                    <constraint id="1358" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint id="630" constant="20" firstItem="481" firstAttribute="trailing" secondItem="617" secondAttribute="trailing"/>
-                            <constraint id="631" constant="90" firstItem="617" firstAttribute="top" secondItem="481" secondAttribute="top"/>
-                            <constraint id="634" constant="20" firstItem="481" firstAttribute="trailing" secondItem="618" secondAttribute="trailing"/>
-                            <constraint id="635" constant="160" firstItem="618" firstAttribute="top" secondItem="481" secondAttribute="top"/>
-                            <constraint id="638" constant="20" firstItem="481" firstAttribute="trailing" secondItem="607" secondAttribute="trailing"/>
-                            <constraint id="639" constant="230" firstItem="607" firstAttribute="top" secondItem="481" secondAttribute="top"/>
-                            <constraint id="642" constant="20" firstItem="481" firstAttribute="trailing" secondItem="619" secondAttribute="trailing"/>
-                            <constraint id="643" constant="218" firstItem="481" firstAttribute="bottom" secondItem="619" secondAttribute="bottom"/>
-                            <constraint id="646" constant="20" firstItem="481" firstAttribute="trailing" secondItem="620" secondAttribute="trailing"/>
-                            <constraint id="647" constant="148" firstItem="481" firstAttribute="bottom" secondItem="620" secondAttribute="bottom"/>
+                            <constraint id="1339" firstItem="617" firstAttribute="top" secondItem="481" secondAttribute="top" constant="119"/>
+                            <constraint id="1340" firstItem="481" firstAttribute="trailing" secondItem="617" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1343" firstItem="618" firstAttribute="top" secondItem="481" secondAttribute="top" constant="189"/>
+                            <constraint id="1344" firstItem="481" firstAttribute="trailing" secondItem="618" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1347" firstItem="481" firstAttribute="bottom" secondItem="607" secondAttribute="bottom" constant="259"/>
+                            <constraint id="1348" firstItem="481" firstAttribute="trailing" secondItem="607" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1351" firstItem="481" firstAttribute="bottom" secondItem="619" secondAttribute="bottom" constant="189"/>
+                            <constraint id="1352" firstItem="481" firstAttribute="trailing" secondItem="619" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1355" firstItem="481" firstAttribute="bottom" secondItem="620" secondAttribute="bottom" constant="119"/>
+                            <constraint id="1356" firstItem="481" firstAttribute="trailing" secondItem="620" secondAttribute="trailing" constant="20"/>
                         </constraints>
                     </view>
                     <connections>
@@ -394,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="482" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="55"/>
+            <point key="canvasLocation" x="1581" y="725"/>
         </scene>
         <scene sceneID="1103">
             <objects>
@@ -410,7 +439,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1108" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="56"/>
+            <point key="canvasLocation" x="91" y="58"/>
         </scene>
         <scene sceneID="1117">
             <objects>
@@ -427,6 +456,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1122" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="743"/>
+        </scene>
+        <scene sceneID="1373">
+            <objects>
+                <viewController id="1374" sceneMemberID="viewController" hidesBottomBarWhenPushed="YES" customClass="SendEmailViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1371"/>
+                        <viewControllerLayoutGuide type="bottom" id="1372"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1375">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upcoming Meeting" minimumFontSize="17" id="1430" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Subject For Email" borderStyle="roundedRect">
+                                <rect key="frame" x="20" y="98" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="1444" firstAttribute="width" constant="280"/>
+                                </constraints>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1431" translatesAutoresizingMaskIntoConstraints="NO" text="We have an upcoming meeting to disucss the new project.">
+                                <rect key="frame" x="20" y="194" width="280" height="219"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <constraints>
+                                    <constraint id="1451" firstAttribute="width" constant="280"/>
+                                    <constraint id="1452" firstAttribute="height" constant="219"/>
+                                </constraints>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" id="1432" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="40" width="280" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1440" firstAttribute="width" constant="280"/>
+                                    <constraint id="1441" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Body" lineBreakMode="tailTruncation" minimumFontSize="10" id="1433" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="136" width="280" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1447" firstAttribute="width" constant="280"/>
+                                    <constraint id="1448" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1434" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="465" width="320" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="1465" firstAttribute="width" constant="320"/>
+                                    <constraint id="1466" firstAttribute="height" constant="50"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="ButtonSend_TouchUpInside:" destination="1374" id="1476" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1435" misplaced="YES">
+                                <rect key="frame" x="249" y="426" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is Priority?" lineBreakMode="tailTruncation" minimumFontSize="10" id="1436" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="20" y="431" width="221" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1458" firstAttribute="width" constant="221"/>
+                                    <constraint id="1459" firstAttribute="height" constant="21"/>
+                                </constraints>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1438" firstItem="1375" firstAttribute="trailing" secondItem="1432" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1439" constant="40" firstItem="1432" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
+                            <constraint id="1442" firstItem="1375" firstAttribute="trailing" secondItem="1430" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1443" constant="98" firstItem="1430" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
+                            <constraint id="1445" firstItem="1375" firstAttribute="trailing" secondItem="1433" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1446" constant="136" firstItem="1433" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
+                            <constraint id="1449" constant="20" firstItem="1375" firstAttribute="trailing" secondItem="1431" secondAttribute="trailing"/>
+                            <constraint id="1450" constant="155" firstItem="1375" firstAttribute="bottom" secondItem="1431" secondAttribute="bottom"/>
+                            <constraint id="1456" firstItem="1436" firstAttribute="leading" secondItem="1375" secondAttribute="leading" constant="20"/>
+                            <constraint id="1457" constant="116" firstItem="1375" firstAttribute="bottom" secondItem="1436" secondAttribute="bottom"/>
+                            <constraint id="1463" firstItem="1375" firstAttribute="trailing" secondItem="1434" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1464" constant="53" firstItem="1375" firstAttribute="bottom" secondItem="1434" secondAttribute="bottom"/>
+                            <constraint id="1471" firstItem="1431" firstAttribute="trailing" secondItem="1435" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1472" firstItem="1434" firstAttribute="top" secondItem="1435" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1473" firstItem="1435" firstAttribute="centerY" secondItem="1436" secondAttribute="centerY" constant="0.0"/>
+                            <constraint id="1474" firstItem="1435" firstAttribute="leading" secondItem="1436" secondAttribute="trailing" constant="8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="SwitchIsPriority" destination="1435" id="name-outlet-1435"/>
+                        <outlet property="TextViewBody" destination="1431" id="name-outlet-1431"/>
+                        <outlet property="TextFieldSubject" destination="1430" id="name-outlet-1430"/>
+                        <outlet property="ButtonSend" destination="1434" id="name-outlet-1434"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1376" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="-31"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

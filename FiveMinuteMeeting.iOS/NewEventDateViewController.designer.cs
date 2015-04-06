@@ -16,21 +16,21 @@ namespace FiveMinuteMeeting.iOS
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIBarButtonItem ButtonSave { get; set; }
+		UIButton ButtonSchedule { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIDatePicker DatePickerDate { get; set; }
 
-		[Action ("ButtonSave_Activated:")]
+		[Action ("ButtonSchedule_TouchUpInside:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void ButtonSave_Activated (UIBarButtonItem sender);
+		partial void ButtonSchedule_TouchUpInside (UIButton sender);
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (ButtonSave != null) {
-				ButtonSave.Dispose ();
-				ButtonSave = null;
+			if (ButtonSchedule != null) {
+				ButtonSchedule.Dispose ();
+				ButtonSchedule = null;
 			}
 			if (DatePickerDate != null) {
 				DatePickerDate.Dispose ();
