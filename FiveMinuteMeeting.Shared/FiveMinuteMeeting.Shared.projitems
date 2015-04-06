@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ContactExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Gravatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\CalendarAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\ContactsAPI.cs" />
@@ -20,5 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalendarViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContactsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewEventViewModel.cs" />
   </ItemGroup>
 </Project>

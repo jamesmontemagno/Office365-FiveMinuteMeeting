@@ -65,8 +65,8 @@ namespace FiveMinuteMeeting.Shared
       {
         get
         {
-          if(discoveryClient != null)
-            return discoveryClient;
+          //if(discoveryClient != null)
+          //  return discoveryClient;
 
           var authContext = GetAuthenticationContext();
           discoveryClient = new DiscoveryClient(discoveryServiceEndpointUri,
@@ -85,7 +85,8 @@ namespace FiveMinuteMeeting.Shared
              authResult = await authContext.AcquireTokenAsync(discoveryServiceResourceId, clientId, returnUri, AuthorizationParams);
              return authResult.AccessToken;
            });
-
+           
+            
            return discoveryClient;
         }
       }
@@ -108,20 +109,5 @@ namespace FiveMinuteMeeting.Shared
         return outlookClient;
       }
 
-      //public static OutlookServicesClient Instance;
-
-//#if __ANDROID__
-//      public static async Task<OutlookServicesClient> EnsureClientCreated(Context context)
-//#elif __IOS__
-//        public static async Task<OutlookServicesClient> EnsureClientCreated(UIViewController context)
-      
-//#endif
-//      {
-//        Authenticator authenticator = new Authenticator(context);
-//        var authInfo = await authenticator.AuthenticateAsync(ExchangeResourceId);
-
-//        Instance = new OutlookServicesClient(new Uri(ExchangeServiceRoot), authInfo.GetAccessToken);
-//        return Instance;
-//      }
     }
 }

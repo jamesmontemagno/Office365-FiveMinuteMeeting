@@ -11,18 +11,18 @@ using UIKit;
 
 namespace FiveMinuteMeeting.iOS
 {
-	[Register ("CalendarViewController")]
-	partial class CalendarViewController
+	[Register ("NewEventDurationViewController")]
+	partial class NewEventDurationViewController
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIBarButtonItem ButtonNewEvent { get; set; }
+		UIButton ButtonFifteen { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (ButtonNewEvent != null) {
-				ButtonNewEvent.Dispose ();
-				ButtonNewEvent = null;
+			if (ButtonFifteen != null) {
+				ButtonFifteen.Dispose ();
+				ButtonFifteen = null;
 			}
 		}
 	}

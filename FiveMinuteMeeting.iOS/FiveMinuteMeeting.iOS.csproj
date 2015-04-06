@@ -115,6 +115,14 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="app.config" />
     <None Include="Info.plist" />
+    <Compile Include="NewEventDateViewController.cs" />
+    <Compile Include="NewEventDateViewController.designer.cs">
+      <DependentUpon>NewEventDateViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewEventDurationViewController.cs" />
+    <Compile Include="NewEventDurationViewController.designer.cs">
+      <DependentUpon>NewEventDurationViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -126,6 +134,9 @@
     <BundleResource Include="Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\Components\btprogresshud-1.15\lib\ios-unified\BTProgressHUD.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.1.203031538-alpha\lib\Xamarin.iOS10\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
@@ -157,6 +168,12 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.0\lib\Xamarin.iOS10\Refractored.Xam.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.0\lib\Xamarin.iOS10\Refractored.Xam.Settings.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="SDWebImage, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -216,10 +233,35 @@
     <BundleResource Include="Resources\missing.png" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="btprogresshud">
+      <Visible>False</Visible>
+      <Version>1.15</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="sdwebimage">
       <Visible>False</Visible>
       <Version>3.7.1.4</Version>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_team%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_team%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_calendar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_calendar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <Import Project="..\FiveMinuteMeeting.Shared\FiveMinuteMeeting.Shared.projitems" Label="Shared" Condition="Exists('..\FiveMinuteMeeting.Shared\FiveMinuteMeeting.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -10,50 +10,42 @@ namespace FiveMinuteMeeting.Shared
 {
     public static class CalendarAPI
     {
-      public static async Task AddEvent(DateTime start, string email, string name)
+      public static async Task AddEvent(DateTime start, string[] emails, string[] names, int length = 5)
       {
         var calendarEvent = new Event
         {
-          Id = "10",
-          BodyPreview = "Preview",
-          Categories = new List<string>(),
-          ChangeKey = string.Empty,
-          HasAttachments = false,
-          Importance = Microsoft.Office365.OutlookServices.Importance.High,
-          IsAllDay = false,
-          IsCancelled = false,
-          ResponseRequested = false,
-          ShowAs = FreeBusyStatus.Busy,
-          Type = EventType.Occurrence,
-          Attendees = new List<Attendee>
-          {
-            new Attendee
+          Attendees = new List<Attendee>(),
+          Body = new ItemBody{Content = length + " minute meeting for status report.", ContentType = BodyType.Text},
+          Start = new DateTimeOffset(start),
+          End = new DateTimeOffset(start.AddMinutes(length)), 
+          Subject = length + " Minute Meeting",
+          Location = new Location { DisplayName = "Everywhere"}
+        };
+
+        for (int i = 0; i < emails.Length; i++)
+        {
+          calendarEvent.Attendees.Add(new Attendee
             {
               EmailAddress = new EmailAddress
               {
-                Address = email,
-                Name = name
+                Address = emails[i],
+                Name = names[i]
               },
               Type = AttendeeType.Required
-            }
-          },
-          Body = new ItemBody{Content = "5 minute meeting for status report.", ContentType = BodyType.Text},
-          Start = new DateTimeOffset(start),
-          End = new DateTimeOffset(start.AddMinutes(5)), 
-          Subject = "5 Minute Meeting",
-          Location = new Location { DisplayName = "Everywhere"}
-        };
-       
-        try
-        {
-          var client = await Client.GetContactsClient();
+            });
+        }
 
-          await client.Me.Events.AddEventAsync(calendarEvent);
-        }
-        catch(Exception ex)
-        {
-          var message = ex.ToString();
-        }
+          try
+          {
+            var client = await Client.GetCalendarClient();
+
+            await client.Me.Events.AddEventAsync(calendarEvent, true);
+            await client.Context.SaveChangesAsync();
+          }
+          catch (Exception ex)
+          {
+            var message = ex.ToString();
+          }
       }
 
       public static async Task DeleteEvent(IEvent calendarEvent)
@@ -63,10 +55,10 @@ namespace FiveMinuteMeeting.Shared
 
       public static async Task<IEnumerable<IEvent>> GetEventsAsync()
       {
-        var client = await Client.GetContactsClient();
+        var client = await Client.GetCalendarClient();
      
         // Obtain first page of events
-        var calResults = await (from i in client.Me.Calendars.GetById("Calendar").Events
+        var calResults = await (from i in client.Me.Calendar.Events
                                 orderby i.Start     
                                 select i).Take(100).ExecuteAsync();
 

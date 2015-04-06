@@ -105,9 +105,6 @@ namespace FiveMinuteMeeting.iOS
       field.ResignFirstResponder();
       return true;
     }
-
-
-
    
     private void PlaceCall()
     {
@@ -157,6 +154,15 @@ namespace FiveMinuteMeeting.iOS
 
       PresentViewControllerAsync(mailController, true);
      
+    }
+
+    public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+    {
+      var vc = segue.DestinationViewController as NewEventDurationViewController;
+      vc.ViewModel.FirstName = ViewModel.FirstName;
+      vc.ViewModel.LastName = ViewModel.LastName;
+      vc.ViewModel.Email = ViewModel.Email;
+
     }
 
 

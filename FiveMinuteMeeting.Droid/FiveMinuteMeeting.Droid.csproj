@@ -72,6 +72,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.Xam.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.0\lib\MonoAndroid10\Refractored.Xam.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.0\lib\MonoAndroid10\Refractored.Xam.Settings.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -158,6 +164,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_add.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="urlimageviewhelper">

@@ -4,53 +4,53 @@
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
-using System;
 using Foundation;
-using UIKit;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace FiveMinuteMeeting.iOS
 {
-	[Foundation.Register("ContactDetailViewController")]
+	[Register ("ContactDetailViewController")]
 	partial class ContactDetailViewController
 	{
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIBarButtonItem ButtonAddEvent { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIBarButtonItem ButtonCall { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIBarButtonItem ButtonEmail { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView ImagePhoto { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField TextEmail { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField TextFirst { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField TextLast { get; set; }
 
-		[Foundation.Outlet]
+		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField TextPhone { get; set; }
 
-		[Foundation.Action("OnEmailClicked:")]
+		[Action ("OnEmailClicked:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		partial void OnEmailClicked (UIBarButtonItem sender);
 
-		[Foundation.Action("OnPhoneClicked:")]
+		[Action ("OnPhoneClicked:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		partial void OnPhoneClicked (UIBarButtonItem sender);
 

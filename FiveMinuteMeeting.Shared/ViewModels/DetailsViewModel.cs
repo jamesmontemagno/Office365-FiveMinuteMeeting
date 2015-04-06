@@ -63,7 +63,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
       set { phone = value; OnPropertyChanged("Phone"); }
     }
 
-    public async Task AddEvent(string email, string name)
+    public async Task AddEvent(string[] email, string[] name)
     {
       await CalendarAPI.AddEvent(DateTime.Now.AddDays(1), email, name);
       //add message here

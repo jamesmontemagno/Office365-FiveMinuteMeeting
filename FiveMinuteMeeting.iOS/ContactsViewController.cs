@@ -22,6 +22,11 @@ namespace FiveMinuteMeeting.iOS
     public override void ViewDidLoad()
     {
       base.ViewDidLoad();
+      EdgesForExtendedLayout = UIRectEdge.None;
+      ExtendedLayoutIncludesOpaqueBars = false;
+      AutomaticallyAdjustsScrollViewInsets = false;
+
+
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
@@ -30,15 +35,6 @@ namespace FiveMinuteMeeting.iOS
       activityIndicator.HidesWhenStopped = true;
       NavigationItem.LeftBarButtonItem = new UIBarButtonItem(activityIndicator);
 
-      var addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
-      {
-        var storyboard = UIStoryboard.FromName("MainStoryboard", null);
-
-        var vc = storyboard.InstantiateViewController("detail") as UIViewController;
-        NavigationController.PushViewController(vc, true);
-      });
-
-      NavigationItem.RightBarButtonItem = addButton;
 
       RefreshControl.ValueChanged += async (sender, args) =>
       {

@@ -16,7 +16,12 @@ namespace FiveMinuteMeeting.iOS
     public override void ViewDidLoad()
     {
       base.ViewDidLoad();
-      this.Title = "Events";
+
+      EdgesForExtendedLayout = UIRectEdge.None;
+      ExtendedLayoutIncludesOpaqueBars = false;
+      AutomaticallyAdjustsScrollViewInsets = false;
+
+
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
