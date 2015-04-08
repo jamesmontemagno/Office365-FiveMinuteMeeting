@@ -42,8 +42,7 @@ namespace FiveMinuteMeeting.Shared
           {
             var client = await Client.GetCalendarClient();
 
-            await client.Me.Events.AddEventAsync(calendarEvent, true);
-            await client.Context.SaveChangesAsync();
+            await client.Me.Events.AddEventAsync(calendarEvent);
           }
           catch (Exception ex)
           {

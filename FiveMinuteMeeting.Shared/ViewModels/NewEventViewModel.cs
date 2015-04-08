@@ -50,7 +50,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
       public async Task AddEvent()
       {
-        await CalendarAPI.AddEvent(Date, new[] { Email, "admin@buildignite.onmicrosoft.com" }, new[] { FirstName + " " + LastName, "admin@buildignite.onmicrosoft.com" }, DurationMinutes);
+        await CalendarAPI.AddEvent(Date, new[] { Email }, new[] { FirstName + " " + LastName }, DurationMinutes);
       }
     }
 }

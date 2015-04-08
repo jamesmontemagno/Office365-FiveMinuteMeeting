@@ -23,10 +23,8 @@ namespace FiveMinuteMeeting.Shared.Helpers
     #region Setting Constants
 
     private const string TenantKey = "tenant_key";
-    private static readonly string TenantDefault = string.Empty;
+    private static readonly string TenantDefault = "common";
 
-    private const string LastAuthorityKey = "last_authority_key";
-    private static readonly string LastAuthorityDefault = string.Empty;
 
     private const string LoggedInUserKey = "logged_in_user_key";
     private static readonly string LoggedInUserDefault = string.Empty;
@@ -42,9 +40,10 @@ namespace FiveMinuteMeeting.Shared.Helpers
       }
       set
       {
-        AppSettings.AddOrUpdateValue(TenantKey, value);
+        AppSettings.AddOrUpdateValue(TenantKey, string.IsNullOrWhiteSpace(value) ? TenantDefault : value);
       }
     }
+
 
     public static string LoggedInUser
     {

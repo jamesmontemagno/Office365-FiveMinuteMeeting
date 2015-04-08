@@ -74,7 +74,7 @@ namespace FiveMinuteMeeting.Droid
     {
 	    switch (item.ItemId) {
 	    case Resource.Id.calendar:
-          ViewModel.AddEvent(ViewModel.Email, ViewModel.FirstName);
+          ViewModel.AddEvent(new []{ViewModel.Email}, new []{ViewModel.FirstName});
 		    break;
 	    case Resource.Id.save:
         ViewModel.FirstName = firstName.Text.Trim();
