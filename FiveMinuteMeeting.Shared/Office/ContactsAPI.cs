@@ -13,8 +13,8 @@ namespace FiveMinuteMeeting.Shared
     
     public static async Task<IEnumerable<IContact>> GetContacts()
     {
-
-      var client = await Client.GetContactsClient();
+      
+      var client = await AuthenticationHelper.GetContactsClient();
       // Obtain first page of contacts
       var contactsResults = await (from i in client.Me.Contacts
                                    orderby i.Surname
@@ -38,7 +38,7 @@ namespace FiveMinuteMeeting.Shared
       try
       {
         contact.FileAs = contact.Surname + ", " + contact.GivenName;
-        var client = await Client.GetContactsClient();
+        var client = await AuthenticationHelper.GetContactsClient();
         await client.Me.Contacts.AddContactAsync(contact);
       }
       catch(Exception ex)

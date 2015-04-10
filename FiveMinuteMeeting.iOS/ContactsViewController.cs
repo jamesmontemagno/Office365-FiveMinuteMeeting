@@ -63,7 +63,9 @@ namespace FiveMinuteMeeting.iOS
         return;
       }
        
-      Client.AuthorizationParams = new AuthorizationParameters(this);
+      AuthenticationHelper.AuthorizationParams = new AuthorizationParameters(this);
+      
+
       await viewModel.GetContactsAsync();
       TableView.ReloadData();
     }

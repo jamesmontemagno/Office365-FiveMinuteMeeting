@@ -48,7 +48,7 @@ namespace FiveMinuteMeeting.Droid
       listView.ItemLongClick += ListViewItemLongClick;
       listView.ItemClick += ListViewItemClick;
 
-      Client.AuthorizationParams = new AuthorizationParameters(this);
+      AuthenticationHelper.AuthorizationParams = new AuthorizationParameters(this);
       
       viewModel.GetContactsAsync();
       refresher.PostDelayed(() =>

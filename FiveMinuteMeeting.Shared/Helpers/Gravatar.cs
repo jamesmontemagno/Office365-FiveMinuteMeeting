@@ -3,6 +3,8 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+
+#if !NETFX_CORE
 using System.Security.Cryptography;
 
 #if __IOS__
@@ -57,3 +59,4 @@ namespace FiveMinuteMeeting.Shared
 	}
 }
 
+#endif

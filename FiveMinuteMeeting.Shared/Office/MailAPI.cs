@@ -24,7 +24,7 @@ namespace FiveMinuteMeeting.Shared.Office
             }
           }
         };
-        var client = await Client.GetMailClient();
+        var client = await AuthenticationHelper.GetMailClient();
 
         await client.Me.SendMailAsync(message, true);
       }
