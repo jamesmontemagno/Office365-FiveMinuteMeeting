@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:layout_height="match_parent"
+            android:drawSelectorOnTop="true"
+            android:gravity="center"
+            android:fastScrollEnabled="true"
+            android:smoothScrollbar="true"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
+            android:longClickable="true" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

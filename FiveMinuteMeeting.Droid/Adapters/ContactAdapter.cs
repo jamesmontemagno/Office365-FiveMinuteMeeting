@@ -13,7 +13,7 @@ using Microsoft.Office365.OutlookServices;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 
-namespace FiveMinuteMeeting.Droid
+namespace FiveMinuteMeeting.Droid.Adapters
 {
   public class ContactWrapper : Java.Lang.Object
   {
@@ -36,7 +36,7 @@ namespace FiveMinuteMeeting.Droid
       var view = convertView;
       if (convertView == null)
       {
-        view = context.LayoutInflater.Inflate(Resource.Layout.Contact, null);
+        view = context.LayoutInflater.Inflate(Resource.Layout.item_contact, null);
         wrapper = new ContactWrapper();
         wrapper.Name = view.FindViewById<TextView>(Resource.Id.name);
         wrapper.Phone = view.FindViewById<TextView>(Resource.Id.phone);

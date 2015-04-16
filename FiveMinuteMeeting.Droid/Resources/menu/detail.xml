@@ -2,22 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <!--Update strings and icons-->
-  <item android:id="@+id/phone"
-	      android:title="Call Contact"
-	      android:icon="@drawable/ic_action_call"
-	      app:showAsAction="always"/>
-
-  <item android:id="@+id/email"
-         android:title="Email Contact"
-         android:icon="@drawable/ic_action_email"
-         app:showAsAction="always"/>
-
-  <item android:id="@+id/calendar"
-	      android:title="Add Event"
-	      android:icon="@drawable/ic_action_calendar"
-	      app:showAsAction="always"/>
-
+ 
   <item android:id="@+id/save"
 	      android:title="Save"
 	      android:icon="@drawable/ic_action_content_save"
