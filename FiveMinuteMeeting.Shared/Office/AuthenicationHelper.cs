@@ -193,7 +193,7 @@ namespace FiveMinuteMeeting.Shared
             using (HttpRequestMessage retryRequest = requestCreator.Invoke())
             {
               retryRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-              retryRequest.Headers.Add("X-ClientService-ClientTag", new[] { "Office 365 API Tools", "1.1" });
+              retryRequest.Headers.Add("X-ClientService-ClientTag", "Office 365 API Tools 1.1.0612");
               response = await client.SendAsync(retryRequest);
             }
           }

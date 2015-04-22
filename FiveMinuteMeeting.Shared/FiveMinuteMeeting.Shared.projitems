@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Office\AuthenicationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\ContactsAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\MailAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Office\Models\CalendarEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalendarViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContactsViewModel.cs" />

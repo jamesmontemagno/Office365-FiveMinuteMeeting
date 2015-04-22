@@ -26,26 +26,27 @@ namespace FiveMinuteMeeting.iOS
       set;
     }
 
+
+    UIBarButtonItem save;
     public override void ViewDidLoad()
     {
        base.ViewDidLoad();
 
        NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 
-       var save = new UIBarButtonItem(
-         UIImage.FromBundle("save.png"),
-         UIBarButtonItemStyle.Plain,
+       save = new UIBarButtonItem(UIBarButtonSystemItem.Save,
         async (sender, args) =>
        {
          ViewModel.FirstName = TextFirst.Text.Trim();
          ViewModel.LastName = TextLast.Text.Trim();
          ViewModel.Email = TextEmail.Text.Trim();
-         ViewModel.Phone = TextEmail.Text.Trim();
+         ViewModel.Phone = TextPhone.Text.Trim();
+         BigTed.BTProgressHUD.Show("Saving contact...");
          await ViewModel.SaveContact();
-         DismissViewControllerAsync(true);
+         BigTed.BTProgressHUD.Dismiss();
+         NavigationController.PopToRootViewController(true);
        });
 
-       NavigationItem.RightBarButtonItem = save;
 
        TextEmail.ShouldReturn += ShouldReturn;
        TextFirst.ShouldReturn += ShouldReturn;
@@ -61,7 +62,6 @@ namespace FiveMinuteMeeting.iOS
 
 
        ButtonCall.Clicked += (sender, args) => PlaceCall();
-       //ButtonEmail.Clicked += (sender, args) => SendEmail();
 
        NSNotificationCenter.DefaultCenter.AddObserver
         (UIKeyboard.DidShowNotification, KeyBoardUpNotification);
@@ -84,6 +84,7 @@ namespace FiveMinuteMeeting.iOS
       if (ViewModel == null)
       {
         ViewModel = new DetailsViewModel();
+        NavigationItem.RightBarButtonItem = save;
       }
       else
       {
@@ -97,6 +98,9 @@ namespace FiveMinuteMeeting.iOS
             url: new NSUrl(Gravatar.GetURL(ViewModel.Contact.EmailAddresses[0].Address, 172)),
             placeholder: UIImage.FromBundle("missing.png")
         );
+
+
+        NavigationItem.RightBarButtonItem = null;
       }
     }
 

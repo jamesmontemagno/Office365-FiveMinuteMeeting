@@ -89,7 +89,7 @@
                                     <barButtonItem title="Item" id="74" translatesAutoresizingMaskIntoConstraints="NO" image="email.png">
                                         <connections>
                                             <action selector="OnEmailClicked:" destination="41" id="83"/>
-                                            <segue id="1428" destination="1374" kind="modal" identifier="email"/>
+                                            <segue id="1428" destination="1374" kind="push" identifier="email"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -459,7 +459,7 @@
         </scene>
         <scene sceneID="1373">
             <objects>
-                <viewController id="1374" sceneMemberID="viewController" hidesBottomBarWhenPushed="YES" customClass="SendEmailViewController">
+                <viewController id="1374" sceneMemberID="viewController" hidesBottomBarWhenPushed="YES" customClass="SendEmailViewController" title="Send Email">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1371"/>
                         <viewControllerLayoutGuide type="bottom" id="1372"/>
@@ -470,92 +470,70 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upcoming Meeting" minimumFontSize="17" id="1430" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Subject For Email" borderStyle="roundedRect">
-                                <rect key="frame" x="20" y="98" width="280" height="30"/>
+                                <rect key="frame" x="20" y="131" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
-                                    <constraint id="1444" firstAttribute="width" constant="280"/>
+                                    <constraint id="1494" firstAttribute="width" constant="280"/>
                                 </constraints>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1431" translatesAutoresizingMaskIntoConstraints="NO" text="We have an upcoming meeting to disucss the new project.">
-                                <rect key="frame" x="20" y="194" width="280" height="219"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1431" translatesAutoresizingMaskIntoConstraints="NO" text="We have an upcoming meeting to discuss the new project." fixedFrame="YES">
+                                <rect key="frame" x="20" y="227" width="280" height="219"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
-                                <constraints>
-                                    <constraint id="1451" firstAttribute="width" constant="280"/>
-                                    <constraint id="1452" firstAttribute="height" constant="219"/>
-                                </constraints>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" id="1432" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="40" width="280" height="50"/>
+                                <rect key="frame" x="20" y="73" width="280" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="1440" firstAttribute="width" constant="280"/>
-                                    <constraint id="1441" firstAttribute="height" constant="50"/>
+                                    <constraint id="1490" firstAttribute="width" constant="280"/>
+                                    <constraint id="1491" firstAttribute="height" constant="50"/>
                                 </constraints>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Body" lineBreakMode="tailTruncation" minimumFontSize="10" id="1433" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="136" width="280" height="50"/>
+                                <rect key="frame" x="20" y="169" width="280" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="1447" firstAttribute="width" constant="280"/>
-                                    <constraint id="1448" firstAttribute="height" constant="50"/>
+                                    <constraint id="1497" firstAttribute="width" constant="280"/>
+                                    <constraint id="1498" firstAttribute="height" constant="50"/>
                                 </constraints>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1434" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="0.0" y="465" width="320" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1434" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="498" width="320" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="Send">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="1465" firstAttribute="width" constant="320"/>
-                                    <constraint id="1466" firstAttribute="height" constant="50"/>
-                                </constraints>
                                 <connections>
                                     <action selector="ButtonSend_TouchUpInside:" destination="1374" id="1476" eventType="touchUpInside"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1435" misplaced="YES">
-                                <rect key="frame" x="249" y="426" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1435" fixedFrame="YES">
+                                <rect key="frame" x="249" y="459" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is Priority?" lineBreakMode="tailTruncation" minimumFontSize="10" id="1436" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
-                                <rect key="frame" x="20" y="431" width="221" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is Priority?" lineBreakMode="tailTruncation" minimumFontSize="10" id="1436" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" fixedFrame="YES">
+                                <rect key="frame" x="20" y="464" width="221" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="1458" firstAttribute="width" constant="221"/>
-                                    <constraint id="1459" firstAttribute="height" constant="21"/>
-                                </constraints>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint id="1438" firstItem="1375" firstAttribute="trailing" secondItem="1432" secondAttribute="trailing" constant="20"/>
-                            <constraint id="1439" constant="40" firstItem="1432" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
-                            <constraint id="1442" firstItem="1375" firstAttribute="trailing" secondItem="1430" secondAttribute="trailing" constant="20"/>
-                            <constraint id="1443" constant="98" firstItem="1430" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
-                            <constraint id="1445" firstItem="1375" firstAttribute="trailing" secondItem="1433" secondAttribute="trailing" constant="20"/>
-                            <constraint id="1446" constant="136" firstItem="1433" firstAttribute="top" secondItem="1375" secondAttribute="top"/>
-                            <constraint id="1449" constant="20" firstItem="1375" firstAttribute="trailing" secondItem="1431" secondAttribute="trailing"/>
-                            <constraint id="1450" constant="155" firstItem="1375" firstAttribute="bottom" secondItem="1431" secondAttribute="bottom"/>
-                            <constraint id="1456" firstItem="1436" firstAttribute="leading" secondItem="1375" secondAttribute="leading" constant="20"/>
-                            <constraint id="1457" constant="116" firstItem="1375" firstAttribute="bottom" secondItem="1436" secondAttribute="bottom"/>
-                            <constraint id="1463" firstItem="1375" firstAttribute="trailing" secondItem="1434" secondAttribute="trailing" constant="0.0"/>
-                            <constraint id="1464" constant="53" firstItem="1375" firstAttribute="bottom" secondItem="1434" secondAttribute="bottom"/>
-                            <constraint id="1471" firstItem="1431" firstAttribute="trailing" secondItem="1435" secondAttribute="trailing" constant="0.0"/>
-                            <constraint id="1472" firstItem="1434" firstAttribute="top" secondItem="1435" secondAttribute="bottom" constant="8"/>
-                            <constraint id="1473" firstItem="1435" firstAttribute="centerY" secondItem="1436" secondAttribute="centerY" constant="0.0"/>
-                            <constraint id="1474" firstItem="1435" firstAttribute="leading" secondItem="1436" secondAttribute="trailing" constant="8"/>
+                            <constraint id="1488" firstItem="1432" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="73"/>
+                            <constraint id="1489" firstItem="1375" firstAttribute="trailing" secondItem="1432" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1492" firstItem="1430" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="131"/>
+                            <constraint id="1493" firstItem="1375" firstAttribute="trailing" secondItem="1430" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1495" firstItem="1433" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="169"/>
+                            <constraint id="1496" firstItem="1375" firstAttribute="trailing" secondItem="1433" secondAttribute="trailing" constant="20"/>
                         </constraints>
                     </view>
                     <connections>

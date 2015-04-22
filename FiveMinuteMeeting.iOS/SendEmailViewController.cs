@@ -49,7 +49,7 @@ namespace FiveMinuteMeeting.iOS
       BigTed.BTProgressHUD.Show("Sending Email...");
       await ViewModel.SendEmail();
       BigTed.BTProgressHUD.Dismiss();
-      
+      NavigationController.PopToRootViewController(true);
     }
 
 
