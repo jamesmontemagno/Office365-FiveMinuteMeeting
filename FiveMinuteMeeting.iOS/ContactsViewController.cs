@@ -62,8 +62,8 @@ namespace FiveMinuteMeeting.iOS
         TableView.ReloadData();
         return;
       }
-       
-      AuthenticationHelper.AuthorizationParams = new AuthorizationParameters(this);
+
+      AuthenticationHelper.PlatformParameters = new PlatformParameters(this);
       
 
       await viewModel.GetContactsAsync();
@@ -153,7 +153,7 @@ namespace FiveMinuteMeeting.iOS
 
         var contact = viewModel.ContactsGrouped[indexPath.Section][indexPath.Row];
         cell.TextLabel.Text = contact.GivenName + " " + contact.Surname;
-        cell.DetailTextLabel.Text = contact.MobilePhone1;
+        cell.DetailTextLabel.Text = contact.BusinessPhones.Count > 0 ? contact.BusinessPhones[0] : contact.MobilePhone1;
         cell.ImageView.SetImage(
             url: new NSUrl(Gravatar.GetURL(contact.EmailAddresses[0].Address, 44)),
             placeholder: UIImage.FromBundle("missing.png")

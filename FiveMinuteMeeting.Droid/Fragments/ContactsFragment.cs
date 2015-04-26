@@ -5,6 +5,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
+using com.refractored.fab;
 using FiveMinuteMeeting.Droid.Adapters;
 using FiveMinuteMeeting.Shared;
 using FiveMinuteMeeting.Shared.ViewModels;
@@ -61,7 +62,14 @@ namespace FiveMinuteMeeting.Droid.Fragments
 
       listView.ItemLongClick += ListViewItemLongClick;
       listView.ItemClick += ListViewItemClick;
-
+      var fab = root.FindViewById<FloatingActionButton>(Resource.Id.fab);
+      fab.AttachToListView(listView);
+      fab.Click += (sender, args) =>
+      {
+        ContactDetailsActivity.ViewModel = null;
+        var intent = new Intent(Activity, typeof(ContactDetailsActivity));
+        StartActivity(intent);
+      };
       return root;
     }
     void ListViewItemClick(object sender, AdapterView.ItemClickEventArgs e)

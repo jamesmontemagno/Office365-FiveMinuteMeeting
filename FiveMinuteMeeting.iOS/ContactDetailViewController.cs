@@ -53,6 +53,13 @@ namespace FiveMinuteMeeting.iOS
        TextPhone.ShouldReturn += ShouldReturn;
        TextLast.ShouldReturn += ShouldReturn;
 
+       TextEmail.ValueChanged += (sender, args) =>
+         {
+           ImagePhoto.SetImage(
+          url: new NSUrl(Gravatar.GetURL(TextEmail.Text, 172)),
+          placeholder: UIImage.FromBundle("missing.png")
+          );
+         };
 
        var color = new CGColor(17.0F / 255.0F, 113.0F / 255.0F, 197.0F / 255F);
        TextEmail.Layer.BorderColor = color;

@@ -19,7 +19,6 @@ namespace FiveMinuteMeeting.Droid.Adapters
   {
     public TextView Name { get; set; }
     public TextView Date { get; set; }
-    public TextView Location { get; set; }
   }
   public class EventAdapter : BaseAdapter<IEvent>
   {
@@ -40,7 +39,6 @@ namespace FiveMinuteMeeting.Droid.Adapters
         wrapper = new EventWrapper();
         wrapper.Name = view.FindViewById<TextView>(Resource.Id.name);
         wrapper.Date = view.FindViewById<TextView>(Resource.Id.date);
-        wrapper.Location = view.FindViewById<TextView>(Resource.Id.location);
         view.Tag = wrapper;
       }
       else
@@ -50,7 +48,6 @@ namespace FiveMinuteMeeting.Droid.Adapters
 
       var theEvent = viewModel.Events[position];
       wrapper.Name.Text = theEvent.Subject;
-      wrapper.Location.Text = theEvent.Location.DisplayName;
       wrapper.Date.Text = theEvent.Start.Value.ToLocalTime().ToString("dd/MM/yy");
     
       return view;

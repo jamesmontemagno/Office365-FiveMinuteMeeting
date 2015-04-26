@@ -23,7 +23,8 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/subject" />
+            android:id="@+id/subject"
+            android:text="Upcoming Meeting!" />
         <TextView
             android:text="Body:"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -43,7 +44,8 @@
                 android:inputType="textMultiLine"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/body" />
+                android:id="@+id/body"
+                android:text="We have a very important upcoming meeting. Please check your calendar and come prepared. I can't wait to see you there!" />
         </android.support.v7.widget.CardView>
         <Button
             android:text="Send"

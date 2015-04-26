@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal">
-        <ImageView
+        <fiveminutemeeting.CircleImageView
             android:layout_width="88dp"
             android:layout_height="88dp"
             android:id="@+id/photo"

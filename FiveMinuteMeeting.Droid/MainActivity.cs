@@ -34,7 +34,7 @@ namespace FiveMinuteMeeting.Droid
     {
       base.OnCreate(bundle);
 
-      AuthenticationHelper.AuthorizationParams = new AuthorizationParameters(this);
+      AuthenticationHelper.PlatformParameters = new PlatformParameters(this);
      
 
       adapter = new TabAdapter(this, SupportFragmentManager);

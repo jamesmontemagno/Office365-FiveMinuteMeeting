@@ -35,7 +35,7 @@ namespace FiveMinuteMeeting.Shared
 
 
 
-      public static string tenantAuthority = "https://login.windows.net/{0}";
+      public static string tenantAuthority = "https://login.microsoftonline.com/{0}";
       public static string Authority
       {
         get
@@ -44,7 +44,7 @@ namespace FiveMinuteMeeting.Shared
         }
       }
 
-      public static IAuthorizationParameters AuthorizationParams { get; set; }
+      public static IPlatformParameters PlatformParameters { get; set; }
 
       private static OutlookServicesClient contactsClient, calendarClient, mailClient;
       public static async Task<OutlookServicesClient> GetContactsClient()
@@ -76,12 +76,12 @@ namespace FiveMinuteMeeting.Shared
       {
         
 
-        var authContext = new AuthenticationContext(Authority, false);
+        var authContext = new AuthenticationContext(Authority);
 
         AuthenticationResult authResult = null;
         if(Settings.TenantId == "common")
         {
-          authResult = await authContext.AcquireTokenAsync(resourceId, clientId, returnUri, AuthorizationParams);
+          authResult = await authContext.AcquireTokenAsync(resourceId, clientId, returnUri, PlatformParameters);
         }
         else
         {
@@ -97,7 +97,7 @@ namespace FiveMinuteMeeting.Shared
 
           if(authResult == null)
           {
-            authResult = await authContext.AcquireTokenAsync(resourceId, clientId, returnUri, AuthorizationParams);
+            authResult = await authContext.AcquireTokenAsync(resourceId, clientId, returnUri, PlatformParameters);
           }
 
         }
@@ -119,7 +119,7 @@ namespace FiveMinuteMeeting.Shared
             return discoveryClient;
 
         
-        discoveryClient = new DiscoveryClient(discoveryServiceEndpointUri,
+        discoveryClient = new DiscoveryClient(
           async () =>
           {
             var authResult = await GetAccessToken(discoveryServiceResourceId);

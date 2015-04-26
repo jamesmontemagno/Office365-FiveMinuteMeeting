@@ -15,7 +15,7 @@ namespace FiveMinuteMeeting.Shared.Office.Models
     [DataMember(Name = "Content")]
     public string Content { get; set; }
   }
-  [DataContract]
+
   public class CalendarAttendee
   {
     [DataMember(Name = "EmailAddress")]
@@ -48,8 +48,8 @@ namespace FiveMinuteMeeting.Shared.Office.Models
     [DataMember(Name = "Body")]
     public CalendarBody Body { get; set; }
 
-    [DataMember(Name = "Attendees")]
-    public IList<CalendarAttendee> Attendees { get; set; }
+    [DataMember(Name ="Attendees")]
+    public CalendarAttendee[] Attendees { get; set; }
   }
 
 }

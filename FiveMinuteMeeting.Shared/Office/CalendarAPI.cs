@@ -48,17 +48,22 @@ namespace FiveMinuteMeeting.Shared
           {
             Content = length + " minute meeting for status report",
             ContentType = "HTML"
-          },
-          Attendees = new List<CalendarAttendee>()
+          }
 
         };
+
+        if (emails.Length > 0)
+          calendarEvent.Attendees = new CalendarAttendee[emails.Length];
+        else
+          calendarEvent.Attendees = new List<CalendarAttendee>().ToArray();
+
 
         for (int i = 0; i < emails.Length; i++)
         {
           if (string.IsNullOrWhiteSpace(emails[i]) || string.IsNullOrWhiteSpace(names[i]))
             continue;
 
-          calendarEvent.Attendees.Add(new CalendarAttendee
+          calendarEvent.Attendees[i]=new CalendarAttendee
             {
               EmailAddress = new CalendarEmailAddress
               {
@@ -66,7 +71,7 @@ namespace FiveMinuteMeeting.Shared
                 Name = names[i]
               },
               Type = AttendeeType.Required.ToString()
-            });
+            };
         }
         var result = await AddCalendarEvent(calendarEvent);
       }
@@ -89,6 +94,8 @@ namespace FiveMinuteMeeting.Shared
           "{0}/me/events", serviceInfo.ApiEndpoint);
 
       string postData = SerializationHelper.Serialize(calendarEvent);
+
+      postData = postData.Replace("null", string.Empty);
 
       Func<HttpRequestMessage> requestCreator = () =>
       {

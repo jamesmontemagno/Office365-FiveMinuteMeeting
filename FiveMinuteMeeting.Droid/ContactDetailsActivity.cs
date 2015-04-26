@@ -38,6 +38,11 @@ namespace FiveMinuteMeeting.Droid
       lastName = FindViewById<EditText>(Resource.Id.last_name);
       photo = FindViewById<ImageView>(Resource.Id.photo2);
 
+      email.TextChanged += (sender, args) =>
+        {
+          Koush.UrlImageViewHelper.SetUrlDrawable(photo, Gravatar.GetURL(email.Text, 88), Resource.Drawable.missing);
+        };
+
       if (ViewModel == null)
       {
         ViewModel = new DetailsViewModel();
@@ -78,17 +83,6 @@ namespace FiveMinuteMeeting.Droid
               App.SendEmailViewModel.LastName = ViewModel.LastName;
 
               StartActivity(typeof(SendEmailActivity));
-              /*var emailIntent = new Intent(Android.Content.Intent.ActionSend);
-              emailIntent.PutExtra(Android.Content.Intent.ExtraEmail,
-                new string[] { ViewModel.Email });
-
-              emailIntent.PutExtra(Android.Content.Intent.ExtraSubject,
-                  "5 Minute Meeting");
-
-              emailIntent.PutExtra(Android.Content.Intent.ExtraText,
-                "We are having a 5 minute stand up tomorrow at this time! Check your calendar.");
-              emailIntent.SetType("message/rfc822");
-              StartActivity(emailIntent);*/
               break;
           }
         };
@@ -105,7 +99,8 @@ namespace FiveMinuteMeeting.Droid
 
     public override bool OnCreateOptionsMenu(IMenu menu)
     {
-      MenuInflater.Inflate(Resource.Menu.detail, menu);
+      if(ViewModel.Contact == null)
+        MenuInflater.Inflate(Resource.Menu.detail, menu);
       return base.OnCreateOptionsMenu(menu);
     }
 

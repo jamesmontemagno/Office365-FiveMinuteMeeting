@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using FiveMinuteMeeting.Shared;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using FiveMinuteMeeting.Shared.Helpers;
 
 namespace FiveMinuteMeeting.Droid
 {
@@ -28,7 +29,7 @@ namespace FiveMinuteMeeting.Droid
       base.OnCreate(bundle);
 
       var login = FindViewById<Button>(Resource.Id.login);
-      AuthenticationHelper.AuthorizationParams = new AuthorizationParameters(this);
+      AuthenticationHelper.PlatformParameters = new PlatformParameters(this);
       progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
       progressBar.Indeterminate = true;
       progressBar.Visibility = ViewStates.Invisible;
@@ -52,6 +53,12 @@ namespace FiveMinuteMeeting.Droid
           StartActivity(typeof(MainActivity));
           Finish();
         };
+
+      if(Settings.TenantId != "common")
+      {
+        StartActivity(typeof(MainActivity));
+        Finish();
+      }
     }
 
 
