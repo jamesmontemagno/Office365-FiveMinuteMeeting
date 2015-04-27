@@ -15,6 +15,7 @@ namespace FiveMinuteMeeting.Droid
 {
   public abstract class BaseActivity : ActionBarActivity
   {
+    public static Activity CurrentActivity { get; private set; }
     public Toolbar Toolbar
     {
       get;
@@ -32,6 +33,12 @@ namespace FiveMinuteMeeting.Droid
         SupportActionBar.SetHomeButtonEnabled(true);
 
       }
+    }
+
+    protected override void OnResume()
+    {
+      base.OnResume();
+      CurrentActivity = this;
     }
 
     protected abstract int LayoutResource

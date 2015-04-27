@@ -130,6 +130,7 @@
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Fragments\ContactsFragment.cs" />
     <Compile Include="Fragments\EventsFragment.cs" />
+    <Compile Include="Helpers\MessageDialogs.cs" />
     <Compile Include="LoginActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NewEventActivity.cs" />

@@ -48,7 +48,7 @@ namespace FiveMinuteMeeting.Droid.Adapters
 
       var theEvent = viewModel.Events[position];
       wrapper.Name.Text = theEvent.Subject;
-      wrapper.Date.Text = theEvent.Start.Value.ToLocalTime().ToString("dd/MM/yy");
+      wrapper.Date.Text = theEvent.Start.Value.ToLocalTime().ToString("MM/dd/yy");
     
       return view;
     }

@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using com.refractored.fab;
 using FiveMinuteMeeting.Droid.Adapters;
+using FiveMinuteMeeting.Droid.Helpers;
 using FiveMinuteMeeting.Shared;
 using FiveMinuteMeeting.Shared.ViewModels;
 
@@ -72,8 +73,17 @@ namespace FiveMinuteMeeting.Droid.Fragments
 
     async void ListViewItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
     {
-      await viewModel.DeleteEvent(viewModel.Events[e.Position]);
-      Activity.RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
+
+
+      MessageDialogs.SendConfirmation("Are you sure you want to delete this event?", "Confirmation", async (delete) =>
+      {
+        if (!delete)
+          return;
+
+        await viewModel.DeleteEvent(viewModel.Events[e.Position]);
+        Activity.RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
+      });
+
     }
 
 

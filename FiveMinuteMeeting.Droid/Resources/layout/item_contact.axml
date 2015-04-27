@@ -13,6 +13,7 @@
         <fiveminutemeeting.CircleImageView
             android:layout_width="88dp"
             android:layout_height="88dp"
+            android:padding="8dp"
             android:id="@+id/photo"
             android:scaleType="centerCrop" />
         <LinearLayout

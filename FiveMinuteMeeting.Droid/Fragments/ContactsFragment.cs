@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using com.refractored.fab;
 using FiveMinuteMeeting.Droid.Adapters;
+using FiveMinuteMeeting.Droid.Helpers;
 using FiveMinuteMeeting.Shared;
 using FiveMinuteMeeting.Shared.ViewModels;
 
@@ -83,32 +84,16 @@ namespace FiveMinuteMeeting.Droid.Fragments
 
     async void ListViewItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
     {
-      await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
-      Activity.RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
+      MessageDialogs.SendConfirmation("Are you sure you want to delete this contact?", "Confirmation", async (delete) =>
+        {
+          if (!delete)
+            return;
+
+          await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
+          Activity.RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
+    
+        });
     }
-
-    /*public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-    {
-      inflater.Inflate(Resource.Menu.main, menu);
-      base.OnCreateOptionsMenu(menu, inflater);
-    }
-
- 
-
-    public override bool OnOptionsItemSelected(IMenuItem item)
-    {
-      switch (item.ItemId)
-      {
-        case Resource.Id.add:
-          ContactDetailsActivity.ViewModel = null;
-          var intent = new Intent(Activity, typeof(ContactDetailsActivity));
-          StartActivity(intent);
-          break;
-      }
-      return base.OnOptionsItemSelected(item);
-    }*/
-
-
    
     public async override void OnResume()
     {
@@ -132,7 +117,7 @@ namespace FiveMinuteMeeting.Droid.Fragments
           case "IsBusy":
             {
               if (viewModel.IsBusy)
-                AndroidHUD.AndHUD.Shared.Show(Activity, "Loading...");
+                AndroidHUD.AndHUD.Shared.Show(Activity, "Loading...", maskType: AndroidHUD.MaskType.Clear);
               else
                 AndroidHUD.AndHUD.Shared.Dismiss(Activity);
               refresher.Refreshing = viewModel.IsBusy;

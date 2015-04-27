@@ -113,8 +113,11 @@ namespace FiveMinuteMeeting.Droid
           ViewModel.LastName = lastName.Text.Trim();
           ViewModel.Email = email.Text.Trim();
           ViewModel.Phone = phone.Text.Trim();
+
+          AndroidHUD.AndHUD.Shared.Show(this, "Saving contact...", maskType: AndroidHUD.MaskType.Clear);
           ViewModel.SaveContact().ContinueWith((result) =>
           {
+            AndroidHUD.AndHUD.Shared.Dismiss();
             if (result.Exception == null)
               Finish();
           });

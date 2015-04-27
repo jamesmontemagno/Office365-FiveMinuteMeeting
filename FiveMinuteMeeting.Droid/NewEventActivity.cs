@@ -41,7 +41,7 @@ namespace FiveMinuteMeeting.Droid
       saveEvent.Click += async (sender, args) =>
         {
           App.NewEventViewModel.Date = new DateTime(datePicker.DateTime.Year, datePicker.DateTime.Month, datePicker.DateTime.Day,
-            timePicker.CurrentHour.IntValue(), timePicker.CurrentMinute.IntValue(), 0);
+            timePicker.CurrentHour.IntValue(), timePicker.CurrentMinute.IntValue(), 0).ToLocalTime();
 
           switch(durationSpinner.SelectedItemPosition)
           {

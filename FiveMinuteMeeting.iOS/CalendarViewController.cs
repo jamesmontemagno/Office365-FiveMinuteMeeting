@@ -120,7 +120,7 @@ namespace FiveMinuteMeeting.iOS
         var calEvent = viewModel.Events[indexPath.Row];
         cell.DetailTextLabel.Text = calEvent.Subject;
         if (calEvent.Start.HasValue)
-          cell.TextLabel.Text = calEvent.Start.Value.ToLocalTime().ToString("dd/MM/yy");
+          cell.TextLabel.Text = calEvent.Start.Value.ToLocalTime().ToString("MM/dd/yy");
         else
           cell.TextLabel.Text = string.Empty;
 
