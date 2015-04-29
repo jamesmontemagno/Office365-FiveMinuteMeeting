@@ -8,6 +8,15 @@ This sample is using a preview edition of ADAL and it has been noted that there 
 
 Additionally, for more Office 365 APIs see their GitHub: http://github.com/officedev
 
+We are also using a preview release of ADAL, you must configure MyGet packages:
+
+* Go to Solution Explorer->[project node]-> Manage NuGet Packages…->Settings.
+* Hit the ‘+’ button on the top right corner
+* In the Name field, enter something to the effect of “AAD Nightly”
+* In the Source field, enter  http://www.myget.org/f/azureadwebstacknightly/
+* Hit ‘Update’
+* Hit OK
+
 
 ### Get Help
 

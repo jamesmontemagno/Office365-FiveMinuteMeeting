@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ContactExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Gravatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MD5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SerializationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Office\CalendarAPI.cs" />

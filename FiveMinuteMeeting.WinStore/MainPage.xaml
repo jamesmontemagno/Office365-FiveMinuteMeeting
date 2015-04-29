@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="FiveMinuteMeeting.WinStore.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FiveMinuteMeeting.WinStore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Contacts" FontSize="40"/>
+        <ProgressBar Grid.Row="1" IsIndeterminate="{Binding IsBusy}" />
+        <ListView Grid.Row="2" x:Name="ContactGridView" ItemsSource="{Binding Contacts}" Margin="12,0,12,0" Background="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <Ellipse Margin="5" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding CompanyName}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Margin="5" Text="{Binding DisplayName}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid MaximumRowsOrColumns="35" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+    </Grid>
+</Page>
