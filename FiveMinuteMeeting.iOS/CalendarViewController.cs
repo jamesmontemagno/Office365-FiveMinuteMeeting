@@ -16,14 +16,19 @@ namespace FiveMinuteMeeting.iOS
     public override void ViewDidLoad()
     {
       base.ViewDidLoad();
-      this.Title = "Events";
+
+      EdgesForExtendedLayout = UIRectEdge.None;
+      ExtendedLayoutIncludesOpaqueBars = false;
+      AutomaticallyAdjustsScrollViewInsets = false;
+
+
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
       activityIndicator = new UIActivityIndicatorView(new CoreGraphics.CGRect(0, 0, 20, 20));
       activityIndicator.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.White;
       activityIndicator.HidesWhenStopped = true;
-      NavigationItem.RightBarButtonItem = new UIBarButtonItem(activityIndicator);
+      NavigationItem.LeftBarButtonItem = new UIBarButtonItem(activityIndicator);
       RefreshControl.ValueChanged += async (sender, args) =>
       {
         if (viewModel.IsBusy)
@@ -115,7 +120,7 @@ namespace FiveMinuteMeeting.iOS
         var calEvent = viewModel.Events[indexPath.Row];
         cell.DetailTextLabel.Text = calEvent.Subject;
         if (calEvent.Start.HasValue)
-          cell.TextLabel.Text = calEvent.Start.Value.ToLocalTime().ToString("dd/MM/yy");
+          cell.TextLabel.Text = calEvent.Start.Value.ToLocalTime().ToString("MM/dd/yy");
         else
           cell.TextLabel.Text = string.Empty;
 

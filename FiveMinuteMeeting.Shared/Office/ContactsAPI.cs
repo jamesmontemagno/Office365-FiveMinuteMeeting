@@ -5,6 +5,8 @@ using System.Text;
 
 using Microsoft.Office365.OutlookServices;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Globalization;
 
 namespace FiveMinuteMeeting.Shared
 {
@@ -13,8 +15,8 @@ namespace FiveMinuteMeeting.Shared
     
     public static async Task<IEnumerable<IContact>> GetContacts()
     {
-
-      var client = await Client.GetContactsClient();
+      
+      var client = await AuthenticationHelper.GetContactsClient();
       // Obtain first page of contacts
       var contactsResults = await (from i in client.Me.Contacts
                                    orderby i.Surname
@@ -37,9 +39,32 @@ namespace FiveMinuteMeeting.Shared
     {
       try
       {
-        contact.FileAs = contact.Surname + ", " + contact.GivenName;
-        var client = await Client.GetContactsClient();
-        await client.Me.Contacts.AddContactAsync(contact);
+        var serviceInfo = await AuthenticationHelper.GetServiceInfo("Contacts");
+
+        var requestUrl = String.Format(CultureInfo.InvariantCulture,
+            "{0}/me/contacts", serviceInfo.ApiEndpoint);
+
+        string postData = string.Format("{{\"GivenName\":\"{0}\",\"Surname\":\"{1}\",\"EmailAddresses\":[{{\"Address\":\"{2}\",\"Name\":\"{3}\"}}],\"BusinessPhones\":[\"{4}\"]}}",
+          contact.GivenName, contact.Surname, contact.EmailAddresses[0].Address, contact.EmailAddresses[0].Name, contact.BusinessPhones[0]);
+
+        Func<HttpRequestMessage> requestCreator = () =>
+        {
+          HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+          request.Headers.Add("Accept", "application/json;odata.metadata=minimal");
+
+          request.Content = new StringContent(postData, Encoding.UTF8, "application/json");
+
+          return request;
+        };
+
+
+        var httpClient = new HttpClient();
+        var response = await AuthenticationHelper.SendRequestAsync(serviceInfo.AccessToken,
+          serviceInfo.ResourceId, httpClient, requestCreator);
+
+        //contact.FileAs = contact.Surname + ", " + contact.GivenName;
+        //var client = await AuthenticationHelper.GetContactsClient();
+        //await client.Me.Contacts.AddContactAsync(contact);
       }
       catch(Exception ex)
       {
@@ -49,24 +74,6 @@ namespace FiveMinuteMeeting.Shared
       return true;
     }
 
-    public static async Task SendEmail(string email, string name, string subject, string body)
-    {
-      var message = new Message
-      {
-        Body = new ItemBody { Content = body, ContentType = BodyType.Text },
-        Importance = Importance.High,
-        Subject = subject,
-        ToRecipients = new List<Recipient>
-        {
-          new Recipient
-          {
-            EmailAddress = new EmailAddress{Address = email, Name = name }
-          }
-        }
-      };
-      var client = await Client.GetContactsClient();
-     
-      await client.Me.SendMailAsync(message, true);
-    }
+    
   }
 }

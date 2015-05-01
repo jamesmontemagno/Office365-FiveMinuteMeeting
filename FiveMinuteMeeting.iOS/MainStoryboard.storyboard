@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="178">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733.0"/>
     </dependencies>
     <scenes>
         <!--class Prefix:identifier View Controller-->
-        <scene sceneID="7">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="11">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="30" kind="relationship" relationship="rootViewController" id="46"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="12" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334" y="12"/>
-        </scene>
         <scene sceneID="29">
             <objects>
                 <tableViewController id="30" sceneMemberID="viewController" customClass="ContactsViewController" storyboardIdentifier="master">
@@ -28,10 +14,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="34" style="IBUITableViewCellStyleSubtitle" textLabel="64" detailTextLabel="65" accessoryType="disclosureIndicator">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34" id="35">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64">
@@ -56,15 +42,26 @@
                             <outlet property="delegate" destination="30" id="33"/>
                         </connections>
                     </tableView>
-                    <navigationItem title="My Team" id="45" key="navigationItem"/>
+                    <navigationItem title="My Team" id="45" key="navigationItem">
+                        <barButtonItem id="890" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem" systemItem="add">
+                            <connections>
+                                <segue id="977" destination="41" kind="push"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="979"/>
+                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="My Team" id="263" image="tab_team.png"/>
+                    <connections>
+                        <outlet property="ButtonNewContact" destination="890" id="name-outlet-890"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61" y="19"/>
+            <point key="canvasLocation" x="466" y="51"/>
         </scene>
         <scene sceneID="40">
             <objects>
-                <viewController id="41" sceneMemberID="viewController" customClass="ContactDetailViewController" storyboardIdentifier="detail">
+                <viewController id="41" sceneMemberID="viewController" customClass="ContactDetailViewController" storyboardIdentifier="detail" hidesBottomBarWhenPushed="YES">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="38"/>
                         <viewControllerLayoutGuide type="bottom" id="39"/>
@@ -85,13 +82,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="76" translatesAutoresizingMaskIntoConstraints="NO"/>
                                     <barButtonItem title="Item" id="107" translatesAutoresizingMaskIntoConstraints="NO" image="calendar.png">
                                         <connections>
-                                            <segue destination="139" kind="push" id="147" identifier="cal"/>
+                                            <segue id="604" destination="480" kind="push" identifier="meeting"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="108" translatesAutoresizingMaskIntoConstraints="NO"/>
                                     <barButtonItem title="Item" id="74" translatesAutoresizingMaskIntoConstraints="NO" image="email.png">
                                         <connections>
                                             <action selector="OnEmailClicked:" destination="41" id="83"/>
+                                            <segue id="1428" destination="1374" kind="push" identifier="email"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -175,10 +173,13 @@
                         <outlet property="ButtonAddEvent" destination="107" id="name-outlet-107"/>
                         <outlet property="ImagePhoto" destination="116" id="name-outlet-116"/>
                     </connections>
+                    <navigationItem title="Title" id="889" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="895"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="23"/>
+            <point key="canvasLocation" x="948" y="51"/>
         </scene>
         <scene sceneID="138">
             <objects>
@@ -189,7 +190,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="143" reuseIdentifier="cal" style="IBUITableViewCellStyleValue2" textLabel="165" detailTextLabel="166">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="143" id="144">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -214,10 +215,337 @@
                             <outlet property="delegate" destination="139" id="142"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="My Calendar" id="361" image="tab_calendar.png"/>
+                    <navigationItem title="Events" id="891" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem">
+                        <barButtonItem id="892" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem" systemItem="add">
+                            <connections>
+                                <segue id="1335" destination="480" kind="push" identifier="personal"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ButtonNewEvent" destination="892" id="name-outlet-892"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="145" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="26"/>
+            <point key="canvasLocation" x="473" y="743"/>
+        </scene>
+        <scene sceneID="177">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="178" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="183">
+                        <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue id="1156" destination="1104" kind="relationship" relationship="viewControllers"/>
+                        <segue id="1176" destination="1118" kind="relationship" relationship="viewControllers"/>
+                    </connections>
+                    <navigationItem title="Five Minute Meeting" id="233" key="navigationItem"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="184" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362" y="398"/>
+        </scene>
+        <scene sceneID="372">
+            <objects>
+                <viewController id="373" sceneMemberID="viewController" customClass="NewEventDateViewController" title="Meeting Time" hidesBottomBarWhenPushed="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="370"/>
+                        <viewControllerLayoutGuide type="bottom" id="371"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="374">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" id="864" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
+                                    <!--2011-07-18 18:00:01 +0000-->
+                                </date>
+                                <constraints>
+                                    <constraint id="1365" firstAttribute="width" constant="320"/>
+                                    <constraint id="1366" firstAttribute="height" constant="216"/>
+                                </constraints>
+                            </datePicker>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date &amp; Time" lineBreakMode="tailTruncation" minimumFontSize="10" id="866" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
+                                <rect key="frame" x="0.0" y="118" width="320" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1361" firstAttribute="width" constant="320"/>
+                                    <constraint id="1362" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1267" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="437" width="320" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="Schedule">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonSchedule_TouchUpInside:" destination="373" id="1268" eventType="touchUpInside"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1369" firstAttribute="width" constant="320"/>
+                                    <constraint id="1370" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1359" firstItem="866" firstAttribute="top" secondItem="374" secondAttribute="top" constant="118"/>
+                            <constraint id="1360" firstItem="374" firstAttribute="trailing" secondItem="866" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1363" firstItem="374" firstAttribute="bottom" secondItem="864" secondAttribute="bottom" constant="176"/>
+                            <constraint id="1364" firstItem="374" firstAttribute="trailing" secondItem="864" secondAttribute="trailing" constant="0.0"/>
+                            <constraint id="1367" firstItem="374" firstAttribute="bottom" secondItem="1267" secondAttribute="bottom" constant="81"/>
+                            <constraint id="1368" firstItem="374" firstAttribute="trailing" secondItem="1267" secondAttribute="trailing" constant="0.0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DatePickerDate" destination="864" id="name-outlet-864"/>
+                        <outlet property="ButtonSchedule" destination="1267" id="name-outlet-1267"/>
+                    </connections>
+                    <toolbarItems/>
+                    <navigationItem title="Meeting Time" id="885" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="375" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="716"/>
+        </scene>
+        <scene sceneID="479">
+            <objects>
+                <viewController id="480" sceneMemberID="viewController" customClass="NewEventDurationViewController" title="Meeting Duration" hidesBottomBarWhenPushed="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="477"/>
+                        <viewControllerLayoutGuide type="bottom" id="478"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="481">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="607" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="259" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="15 Minutes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="783" destination="373" kind="push" identifier="fifteen"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1349" firstAttribute="width" constant="280"/>
+                                    <constraint id="1350" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="617" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="119" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="5 Minutes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="695" destination="373" kind="push" identifier="five"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1341" firstAttribute="width" constant="280"/>
+                                    <constraint id="1342" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="618" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="189" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="10 Minutes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="748" destination="373" kind="push" identifier="ten"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1345" firstAttribute="width" constant="280"/>
+                                    <constraint id="1346" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="619" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="329" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="30 Minutes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="821" destination="373" kind="push" identifier="thirty"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1353" firstAttribute="width" constant="280"/>
+                                    <constraint id="1354" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="620" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="399" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="60 Minutes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="862" destination="373" kind="push" identifier="sixty"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1357" firstAttribute="width" constant="280"/>
+                                    <constraint id="1358" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1339" firstItem="617" firstAttribute="top" secondItem="481" secondAttribute="top" constant="119"/>
+                            <constraint id="1340" firstItem="481" firstAttribute="trailing" secondItem="617" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1343" firstItem="618" firstAttribute="top" secondItem="481" secondAttribute="top" constant="189"/>
+                            <constraint id="1344" firstItem="481" firstAttribute="trailing" secondItem="618" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1347" firstItem="481" firstAttribute="bottom" secondItem="607" secondAttribute="bottom" constant="259"/>
+                            <constraint id="1348" firstItem="481" firstAttribute="trailing" secondItem="607" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1351" firstItem="481" firstAttribute="bottom" secondItem="619" secondAttribute="bottom" constant="189"/>
+                            <constraint id="1352" firstItem="481" firstAttribute="trailing" secondItem="619" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1355" firstItem="481" firstAttribute="bottom" secondItem="620" secondAttribute="bottom" constant="119"/>
+                            <constraint id="1356" firstItem="481" firstAttribute="trailing" secondItem="620" secondAttribute="trailing" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ButtonFifteen" destination="607" id="name-outlet-607"/>
+                    </connections>
+                    <navigationItem title="Meeting Duration" id="893" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="894"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="482" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1581" y="725"/>
+        </scene>
+        <scene sceneID="1103">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="1104" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1107">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="1204" destination="30" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                    <tabBarItem key="tabBarItem" id="1155" title="My Team" image="tab_team.png"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1108" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91" y="58"/>
+        </scene>
+        <scene sceneID="1117">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="1118" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1121">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="1233" destination="139" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                    <tabBarItem key="tabBarItem" title="My Calendar" id="1175" image="calendar.png"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1122" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="743"/>
+        </scene>
+        <scene sceneID="1373">
+            <objects>
+                <viewController id="1374" sceneMemberID="viewController" hidesBottomBarWhenPushed="YES" customClass="SendEmailViewController" title="Send Email">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1371"/>
+                        <viewControllerLayoutGuide type="bottom" id="1372"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1375">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upcoming Meeting" minimumFontSize="17" id="1430" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Subject For Email" borderStyle="roundedRect">
+                                <rect key="frame" x="20" y="131" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="1494" firstAttribute="width" constant="280"/>
+                                </constraints>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1431" translatesAutoresizingMaskIntoConstraints="NO" text="We have an upcoming meeting to discuss the new project." fixedFrame="YES">
+                                <rect key="frame" x="20" y="227" width="280" height="219"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" id="1432" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="73" width="280" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1490" firstAttribute="width" constant="280"/>
+                                    <constraint id="1491" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Body" lineBreakMode="tailTruncation" minimumFontSize="10" id="1433" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="169" width="280" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1497" firstAttribute="width" constant="280"/>
+                                    <constraint id="1498" firstAttribute="height" constant="50"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1434" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="498" width="320" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonSend_TouchUpInside:" destination="1374" id="1476" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1435" fixedFrame="YES">
+                                <rect key="frame" x="249" y="459" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is Priority?" lineBreakMode="tailTruncation" minimumFontSize="10" id="1436" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right" fixedFrame="YES">
+                                <rect key="frame" x="20" y="464" width="221" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1488" firstItem="1432" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="73"/>
+                            <constraint id="1489" firstItem="1375" firstAttribute="trailing" secondItem="1432" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1492" firstItem="1430" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="131"/>
+                            <constraint id="1493" firstItem="1375" firstAttribute="trailing" secondItem="1430" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1495" firstItem="1433" firstAttribute="top" secondItem="1375" secondAttribute="top" constant="169"/>
+                            <constraint id="1496" firstItem="1375" firstAttribute="trailing" secondItem="1433" secondAttribute="trailing" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="SwitchIsPriority" destination="1435" id="name-outlet-1435"/>
+                        <outlet property="TextViewBody" destination="1431" id="name-outlet-1431"/>
+                        <outlet property="TextFieldSubject" destination="1430" id="name-outlet-1430"/>
+                        <outlet property="ButtonSend" destination="1434" id="name-outlet-1434"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1376" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="-31"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -233,5 +561,7 @@
         <image name="save.png" width="20" height="20"/>
         <image name="calendar.png" width="22" height="22"/>
         <image name="missing.png" width="40" height="40"/>
+        <image name="tab_team.png" width="28" height="18"/>
+        <image name="tab_calendar.png" width="28" height="28"/>
     </resources>
 </document>

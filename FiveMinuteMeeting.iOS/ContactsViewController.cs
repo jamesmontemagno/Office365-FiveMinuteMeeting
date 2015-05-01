@@ -22,6 +22,11 @@ namespace FiveMinuteMeeting.iOS
     public override void ViewDidLoad()
     {
       base.ViewDidLoad();
+      EdgesForExtendedLayout = UIRectEdge.None;
+      ExtendedLayoutIncludesOpaqueBars = false;
+      AutomaticallyAdjustsScrollViewInsets = false;
+
+
       NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
       this.RefreshControl = new UIRefreshControl();
 
@@ -30,15 +35,6 @@ namespace FiveMinuteMeeting.iOS
       activityIndicator.HidesWhenStopped = true;
       NavigationItem.LeftBarButtonItem = new UIBarButtonItem(activityIndicator);
 
-      var addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
-      {
-        var storyboard = UIStoryboard.FromName("MainStoryboard", null);
-
-        var vc = storyboard.InstantiateViewController("detail") as UIViewController;
-        NavigationController.PushViewController(vc, true);
-      });
-
-      NavigationItem.RightBarButtonItem = addButton;
 
       RefreshControl.ValueChanged += async (sender, args) =>
       {
@@ -66,8 +62,10 @@ namespace FiveMinuteMeeting.iOS
         TableView.ReloadData();
         return;
       }
-       
-      Client.AuthorizationParams = new AuthorizationParameters(this);
+
+      AuthenticationHelper.PlatformParameters = new PlatformParameters(this);
+      
+
       await viewModel.GetContactsAsync();
       TableView.ReloadData();
     }
@@ -155,7 +153,7 @@ namespace FiveMinuteMeeting.iOS
 
         var contact = viewModel.ContactsGrouped[indexPath.Section][indexPath.Row];
         cell.TextLabel.Text = contact.GivenName + " " + contact.Surname;
-        cell.DetailTextLabel.Text = contact.MobilePhone1;
+        cell.DetailTextLabel.Text = contact.BusinessPhones.Count > 0 ? contact.BusinessPhones[0] : contact.MobilePhone1;
         cell.ImageView.SetImage(
             url: new NSUrl(Gravatar.GetURL(contact.EmailAddresses[0].Address, 44)),
             placeholder: UIImage.FromBundle("missing.png")

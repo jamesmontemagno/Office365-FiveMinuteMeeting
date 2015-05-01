@@ -13,7 +13,7 @@ using Microsoft.Office365.OutlookServices;
 using FiveMinuteMeeting.Shared.ViewModels;
 using FiveMinuteMeeting.Shared;
 
-namespace FiveMinuteMeeting.Droid
+namespace FiveMinuteMeeting.Droid.Adapters
 {
   public class ContactWrapper : Java.Lang.Object
   {
@@ -36,7 +36,7 @@ namespace FiveMinuteMeeting.Droid
       var view = convertView;
       if (convertView == null)
       {
-        view = context.LayoutInflater.Inflate(Resource.Layout.Contact, null);
+        view = context.LayoutInflater.Inflate(Resource.Layout.item_contact, null);
         wrapper = new ContactWrapper();
         wrapper.Name = view.FindViewById<TextView>(Resource.Id.name);
         wrapper.Phone = view.FindViewById<TextView>(Resource.Id.phone);
@@ -50,7 +50,7 @@ namespace FiveMinuteMeeting.Droid
 
       var contact = viewModel.Contacts[position];
       wrapper.Name.Text = contact.GivenName + " " + contact.Surname;
-      wrapper.Phone.Text = contact.MobilePhone1;
+      wrapper.Phone.Text = contact.BusinessPhones.Count > 0 ? contact.BusinessPhones[0] : contact.MobilePhone1;
       Koush.UrlImageViewHelper.SetUrlDrawable(wrapper.Photo, Gravatar.GetURL(contact.EmailAddresses[0].Address, 88), Resource.Drawable.missing);
 
       return view;

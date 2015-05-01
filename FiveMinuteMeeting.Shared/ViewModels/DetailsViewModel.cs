@@ -1,3 +1,4 @@
+using FiveMinuteMeeting.Shared.Office;
 using Microsoft.Office365.OutlookServices;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
       
       FirstName = Contact.GivenName;
       LastName = Contact.Surname;
-      Phone = Contact.MobilePhone1;
+      Phone = Contact.BusinessPhones.Count > 0 ? Contact.BusinessPhones[0] : string.Empty;
       Email = Contact.EmailAddresses.Count > 0 ? Contact.EmailAddresses[0].Address : string.Empty; 
     }
 
@@ -63,7 +64,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
       set { phone = value; OnPropertyChanged("Phone"); }
     }
 
-    public async Task AddEvent(string email, string name)
+    public async Task AddEvent(string[] email, string[] name)
     {
       await CalendarAPI.AddEvent(DateTime.Now.AddDays(1), email, name);
       //add message here
@@ -71,7 +72,7 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
     public async Task SendEmail()
     {
-      await ContactsAPI.SendEmail(Email, FirstName + " " + LastName,
+      await MailAPI.SendEmail(Email, FirstName + " " + LastName,
         "Meeting tomorrow",
         "Don't forget about our meeting tomorrow.");
 
@@ -91,7 +92,6 @@ namespace FiveMinuteMeeting.Shared.ViewModels
 
         contact.GivenName = FirstName;
         contact.Surname = LastName;
-        contact.MobilePhone1 = Phone;
         if (contact.EmailAddresses.Count == 0)
         {
           contact.EmailAddresses.Add(new EmailAddress
@@ -103,6 +103,16 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         else
         {
           contact.EmailAddresses[0].Address = Email;
+          contact.EmailAddresses[0].Name = FirstName + " " + LastName;
+        }
+
+        if(contact.BusinessPhones.Count == 0)
+        {
+          contact.BusinessPhones.Add(Phone);
+        }
+        else
+        {
+          contact.BusinessPhones[0] = Phone;
         }
 
         if (newContact)

@@ -10,120 +10,95 @@ using FiveMinuteMeeting.Shared;
 using Android.Support.V4.Widget;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Android.Support.V7.App;
+using com.refractored;
+using Android.Support.V4.View;
+using FiveMinuteMeeting.Droid.Fragments;
+using Android.Support.V4.App;
 
 namespace FiveMinuteMeeting.Droid
 {
-  [Activity(Label = "My Team", MainLauncher = true, Icon = "@drawable/ic_launcher")]
-  public class MainActivity : ActionBarActivity
+  [Activity(Label = "5 Minute Meeting")]
+  public class MainActivity : BaseActivity
   {
 
-    private ContactsViewModel viewModel = App.ContactsViewModel;
-    private SwipeRefreshLayout refresher;
-    private ListView listView;
+    protected override int LayoutResource
+    {
+      get { return Resource.Layout.main; }
+    }
+
+    private TabAdapter adapter;
+    private ViewPager pager;
+    private PagerSlidingTabStrip tabs;
 
     protected async override void OnCreate(Bundle bundle)
     {
       base.OnCreate(bundle);
 
-      SetContentView(Resource.Layout.Main);
+      AuthenticationHelper.PlatformParameters = new PlatformParameters(this);
+     
 
-      refresher = FindViewById<SwipeRefreshLayout>(Resource.Id.refresher);
-      refresher.SetColorScheme(Resource.Color.blue);
-      
-      refresher.Refresh += async delegate
-      {
-        if(viewModel.IsBusy)
-          return;
+      adapter = new TabAdapter(this, SupportFragmentManager);
+      pager = FindViewById<ViewPager>(Resource.Id.pager);
+      tabs = FindViewById<PagerSlidingTabStrip>(Resource.Id.tabs);
+      pager.Adapter = adapter;
+      tabs.SetViewPager(pager);
+      pager.OffscreenPageLimit = 2;
 
-        await viewModel.GetContactsAsync();
-        RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
-      };
 
-      viewModel.PropertyChanged += PropertyChanged;
+      SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+      SupportActionBar.SetHomeButtonEnabled(false);
 
-      listView = FindViewById<ListView>(Resource.Id.list);
 
-      listView.Adapter = new ContactAdapter(this, viewModel);
-
-      listView.ItemLongClick += ListViewItemLongClick;
-      listView.ItemClick += ListViewItemClick;
-
-      Client.AuthorizationParams = new AuthorizationParameters(this);
-      
-      viewModel.GetContactsAsync();
-      refresher.PostDelayed(() =>
-      {
-        refresher.Refreshing = true;
-      }, 1000);
     }
 
-    void ListViewItemClick(object sender, AdapterView.ItemClickEventArgs e)
-    {
-      var contact = viewModel.Contacts[e.Position];
-      var vm = new DetailsViewModel(contact);
-      DetailActivity.ViewModel = vm;
-      var intent = new Intent(this, typeof(DetailActivity));
-      StartActivity(intent);
-    }
-
-    async void ListViewItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
-    {
-      await viewModel.DeleteContact(viewModel.Contacts[e.Position]);
-      RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
-    }
-
-
-    public override bool OnCreateOptionsMenu(IMenu menu)
-    {
-      MenuInflater.Inflate(Resource.Menu.main, menu);
-      return base.OnCreateOptionsMenu(menu);
-    }
-
-
-    public override bool OnOptionsItemSelected(IMenuItem item)
-    {
-      switch (item.ItemId)
-      {
-        case Resource.Id.add:
-          DetailActivity.ViewModel = null;
-           var intent = new Intent(this, typeof(DetailActivity));
-          StartActivity(intent);
-          break;
-      }
-      return base.OnOptionsItemSelected(item);
-    }
 
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {
       base.OnActivityResult(requestCode, resultCode, data);
       AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
     }
-    
+  }
 
-    protected async override void OnResume()
+
+  public class TabAdapter : FragmentStatePagerAdapter
+  {
+    private string[] Titles = new[] { "My Team", "My Events" };
+    public TabAdapter(Context context, Android.Support.V4.App.FragmentManager fm)
+      : base(fm)
     {
-      base.OnResume();
 
-      if(viewModel.Contacts.Count == 0)
-        viewModel.GetContactsAsync();
-      else
-        RunOnUiThread(() => { ((BaseAdapter)listView.Adapter).NotifyDataSetChanged(); });
     }
 
-    void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
     {
-      RunOnUiThread(() =>
+      return new Java.Lang.String(Titles[position]);
+    }
+    #region implemented abstract members of PagerAdapter
+    public override int Count
+    {
+      get
       {
-        switch (e.PropertyName)
-        {
-          case "IsBusy":
-            {
-              refresher.Refreshing = viewModel.IsBusy;
-              ((BaseAdapter)listView.Adapter).NotifyDataSetChanged();
-            }
-            break;
-        }
-      });
+        return Titles.Length;
+      }
+    }
+    #endregion
+    #region implemented abstract members of FragmentPagerAdapter
+    public override Android.Support.V4.App.Fragment GetItem(int position)
+    {
+      switch (position)
+      {
+        case 0:
+          return ContactsFragment.NewInstance();
+        case 1:
+          return EventsFragment.NewInstance();
+      }
+      return null;
+    }
+    #endregion
+
+    public override int GetItemPosition(Java.Lang.Object frag)
+    {
+      return PositionNone;
     }
   }
 }

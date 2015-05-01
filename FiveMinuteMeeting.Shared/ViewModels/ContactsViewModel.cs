@@ -46,8 +46,14 @@ namespace FiveMinuteMeeting.Shared.ViewModels
         {
           Contacts.Clear();
           var contacts = await ContactsAPI.GetContacts();
-          foreach (var contact in contacts)
-            Contacts.Add(contact);
+		  foreach (var contact in contacts)
+		  {
+#if NETFX_CORE
+			  
+			  contact.CompanyName = Gravatar.GetURL(contact.EmailAddresses[0].Address, 88);
+#endif
+			  Contacts.Add(contact);
+		  }
 
           SortContacts();
 

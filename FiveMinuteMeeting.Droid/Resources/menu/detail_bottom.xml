@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <!--Update strings and icons-->
+  <item android:id="@+id/phone"
+	      android:title="Call"
+	      android:icon="@drawable/ic_action_call"
+	      app:showAsAction="always|withText"/>
+
+  <item android:id="@+id/email"
+         android:title="Email"
+         android:icon="@drawable/ic_action_email"
+         app:showAsAction="always|withText"/>
+
+  <item android:id="@+id/calendar"
+	      android:title="Add Event"
+	      android:icon="@drawable/ic_action_calendar"
+	      app:showAsAction="always|withText"/>
+
+</menu>
+

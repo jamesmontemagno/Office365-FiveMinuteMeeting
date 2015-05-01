@@ -1,0 +1,12 @@
+﻿<Application
+    x:Class="FiveMinuteMeeting.WinStore.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FiveMinuteMeeting.WinStore">
+    <Application.Resources>
+        <x:String x:Key="ida:ClientID">beabc508-dda9-4b2a-b241-df1d8dd130a4</x:String>
+    
+        <x:String x:Key="ida:AuthorizationUri">https://login.windows.net</x:String>
+    </Application.Resources>
+
+</Application>
