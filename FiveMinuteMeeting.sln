@@ -11,6 +11,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FiveMinuteMeeting.Shared", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveMinuteMeeting.WinStore", "FiveMinuteMeeting.WinStore\FiveMinuteMeeting.WinStore.csproj", "{253AE96A-531C-4100-8FD3-F4BDB3FF853C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveMinuteMeeting.Analysis", "FiveMinuteMeeting.Analysis\FiveMinuteMeeting.Analysis.csproj", "{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		FiveMinuteMeeting.Shared\FiveMinuteMeeting.Shared.projitems*{253ae96a-531c-4100-8fd3-f4bdb3ff853c}*SharedItemsImports = 4
@@ -206,6 +208,42 @@ Global
 		{253AE96A-531C-4100-8FD3-F4BDB3FF853C}.Release|x86.ActiveCfg = Release|x86
 		{253AE96A-531C-4100-8FD3-F4BDB3FF853C}.Release|x86.Build.0 = Release|x86
 		{253AE96A-531C-4100-8FD3-F4BDB3FF853C}.Release|x86.Deploy.0 = Release|x86
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|Mixed Platforms.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|x64.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|Mixed Platforms.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|x64.ActiveCfg = Release|Any CPU
+		{95F476E2-08C8-47D7-B3AC-C4F9B6FE89EB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
