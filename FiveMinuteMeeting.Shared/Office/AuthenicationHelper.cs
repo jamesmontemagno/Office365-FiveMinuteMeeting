@@ -71,7 +71,7 @@ namespace FiveMinuteMeeting.Shared
         return mailClient;
       }
 
-
+		//Vittorio Approved!
       private async static Task<AuthenticationResult> GetAccessToken(string resourceId)
       {
         
