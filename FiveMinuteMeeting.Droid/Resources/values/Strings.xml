@@ -10,4 +10,7 @@
       <item>45 Minutes</item>
       <item>60 Minutes</item>
     </string-array>
+  <string name="hangup">Hangup</string>
+  <string name="phonenumber">Phone Number</string>
+  <string name="call">Call</string>
 </resources>

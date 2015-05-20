@@ -114,6 +114,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="TwilioClient.Android">
+      <HintPath>..\Components\twilio-client-1.2.1\lib\android\TwilioClient.Android.dll</HintPath>
+    </Reference>
     <Reference Include="UrlImageViewHelper">
       <HintPath>..\Components\urlimageviewhelper-1.0.4\lib\android\UrlImageViewHelper.dll</HintPath>
     </Reference>
@@ -138,6 +141,7 @@
     <Compile Include="Adapters\EventAdapter.cs" />
     <Compile Include="BaseActivity.cs" />
     <Compile Include="Adapters\ContactAdapter.cs" />
+    <Compile Include="CallActivity.cs" />
     <Compile Include="ContactDetailsActivity.cs" />
     <Compile Include="Controls\CircleDrawable.cs" />
     <Compile Include="Controls\CircleImageView.cs" />
@@ -182,6 +186,7 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\login.axml" />
+    <AndroidResource Include="Resources\layout\call_activity.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\main.axml" />
@@ -237,11 +242,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="Properties\_SettingsStarted.txt" />
+    <AndroidResource Include="Resources\raw\disconnect.wav" />
+    <AndroidResource Include="Resources\raw\incoming.wav" />
+    <AndroidResource Include="Resources\raw\outgoing.wav" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="AndHUD">
       <Visible>False</Visible>
       <Version>1.3.1</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="twilio-client">
+      <Visible>False</Visible>
+      <Version>1.2.1</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="urlimageviewhelper">
       <Visible>False</Visible>

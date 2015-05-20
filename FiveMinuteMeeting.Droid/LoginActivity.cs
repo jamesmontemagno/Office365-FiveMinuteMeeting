@@ -23,6 +23,14 @@ namespace FiveMinuteMeeting.Droid
 	    get { return Resource.Layout.login; }
     }
 
+		public override bool LoadTwilio
+		{
+			get
+			{
+				return false;
+			}
+		}
+
     ProgressBar progressBar;
     protected override void OnCreate(Bundle bundle)
     {

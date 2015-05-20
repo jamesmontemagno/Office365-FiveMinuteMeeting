@@ -26,11 +26,28 @@ namespace FiveMinuteMeeting.Shared.Helpers
     private static readonly string TenantDefault = "common";
 
 
-    private const string LoggedInUserKey = "logged_in_user_key";
-    private static readonly string LoggedInUserDefault = string.Empty;
+		private const string LoggedInUserKey = "logged_in_user_key";
+		private static readonly string LoggedInUserDefault = string.Empty;
 
-    #endregion
+		private const string TwilioNumberKey = "twilio_number_key";
+#if __ANDROID__
+		private static readonly string TwilioNumberDefault = "12014686561";
+#else
+		private static readonly string TwilioNumberDefault = "14088316689";
+#endif
 
+		#endregion
+		public static string TwilioNumber
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault(TwilioNumberKey, TwilioNumberDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue(TwilioNumberKey, value);
+			}
+		}
 
     public static string TenantId
     {

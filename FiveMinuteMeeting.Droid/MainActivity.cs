@@ -14,14 +14,15 @@ using com.refractored;
 using Android.Support.V4.View;
 using FiveMinuteMeeting.Droid.Fragments;
 using Android.Support.V4.App;
+using TwilioClient.Android;
+using FiveMinuteMeeting.Shared.Helpers;
 
 namespace FiveMinuteMeeting.Droid
 {
   [Activity(Label = "5 Minute Meeting")]
-  public class MainActivity : BaseActivity
+  public class MainActivity : BaseActivity, Twilio.IInitListener
   {
-
-    protected override int LayoutResource
+		protected override int LayoutResource
     {
       get { return Resource.Layout.main; }
     }
@@ -47,8 +48,6 @@ namespace FiveMinuteMeeting.Droid
 
       SupportActionBar.SetDisplayHomeAsUpEnabled(false);
       SupportActionBar.SetHomeButtonEnabled(false);
-
-
     }
 
 
@@ -57,7 +56,8 @@ namespace FiveMinuteMeeting.Droid
       base.OnActivityResult(requestCode, resultCode, data);
       AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
     }
-  }
+		
+	}
 
 
   public class TabAdapter : FragmentStatePagerAdapter

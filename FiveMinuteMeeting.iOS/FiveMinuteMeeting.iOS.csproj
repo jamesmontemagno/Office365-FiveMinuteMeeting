@@ -103,6 +103,10 @@
     <Compile Include="CalendarViewController.designer.cs">
       <DependentUpon>CalendarViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="CallViewController.cs" />
+    <Compile Include="CallViewController.designer.cs">
+      <DependentUpon>CallViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContactDetailViewController.cs" />
     <Compile Include="ContactDetailViewController.designer.cs">
       <DependentUpon>ContactDetailViewController.cs</DependentUpon>
@@ -194,6 +198,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="TwilioClient.iOS-Unified">
+      <HintPath>..\Components\twilio-client-1.2.1\lib\ios-unified\TwilioClient.iOS-Unified.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +259,10 @@
     <XamarinComponentReference Include="sdwebimage">
       <Visible>False</Visible>
       <Version>3.7.1.4</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="twilio-client">
+      <Visible>False</Visible>
+      <Version>1.2.1</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

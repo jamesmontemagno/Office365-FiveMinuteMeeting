@@ -69,13 +69,17 @@ namespace FiveMinuteMeeting.Droid
               App.NewEventViewModel.Email = ViewModel.Email;
               App.NewEventViewModel.FirstName = ViewModel.FirstName;
               App.NewEventViewModel.LastName = ViewModel.LastName;
+							App.NewEventViewModel.Phone = ViewModel.Phone;
               StartActivity(typeof(NewEventActivity));
               //ViewModel.AddEvent(new[] { ViewModel.Email }, new[] { ViewModel.FirstName });
               break;
             case Resource.Id.phone:
-              var uri = Android.Net.Uri.Parse("tel:" + ViewModel.Phone);
-              var intent = new Intent(Intent.ActionView, uri);
-              StartActivity(intent);
+              //var uri = Android.Net.Uri.Parse("tel:" + ViewModel.Phone);
+              //var intent = new Intent(Intent.ActionView, uri);
+							var intent = new Intent(this, typeof(CallActivity));
+							intent.PutExtra("phone", ViewModel.Phone);
+							
+							StartActivity(intent);
               break;
             case Resource.Id.email:
               App.SendEmailViewModel.Email = ViewModel.Email;

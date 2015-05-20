@@ -35,7 +35,7 @@ namespace FiveMinuteMeeting.Shared
 
     }
 
-    public static async Task<bool> AddEvent(DateTime start, string[] emails, string[] names, int length = 5)
+    public static async Task<bool> AddEvent(DateTime start, string[] emails, string[] names, int length = 5, string phone = "")
     {
       try
       {
@@ -74,6 +74,9 @@ namespace FiveMinuteMeeting.Shared
             };
         }
         var result = await AddCalendarEvent(calendarEvent);
+
+				if (!string.IsNullOrWhiteSpace(phone))
+					TwilioHelper.ScheduleMeeting(phone, start, length); ;
       }
       catch (Exception ex)
       {

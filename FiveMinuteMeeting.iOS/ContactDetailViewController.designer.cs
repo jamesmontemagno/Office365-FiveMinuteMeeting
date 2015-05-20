@@ -50,10 +50,6 @@ namespace FiveMinuteMeeting.iOS
 		[GeneratedCode ("iOS Designer", "1.0")]
 		partial void OnEmailClicked (UIBarButtonItem sender);
 
-		[Action ("OnPhoneClicked:")]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void OnPhoneClicked (UIBarButtonItem sender);
-
 		void ReleaseDesignerOutlets ()
 		{
 			if (ButtonAddEvent != null) {

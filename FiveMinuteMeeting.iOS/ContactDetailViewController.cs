@@ -68,7 +68,7 @@ namespace FiveMinuteMeeting.iOS
        TextLast.Layer.BorderColor = color;
 
 
-       ButtonCall.Clicked += (sender, args) => PlaceCall();
+       //ButtonCall.Clicked += (sender, args) => PlaceCall();
 
        NSNotificationCenter.DefaultCenter.AddObserver
         (UIKeyboard.DidShowNotification, KeyBoardUpNotification);
@@ -185,8 +185,15 @@ namespace FiveMinuteMeeting.iOS
             vc.ViewModel.FirstName = ViewModel.FirstName;
             vc.ViewModel.LastName = ViewModel.LastName;
             vc.ViewModel.Email = ViewModel.Email;
+						vc.ViewModel.Phone = ViewModel.Phone;
           }
           break;
+				case "call":
+					{
+						var vc = segue.DestinationViewController as CallViewController;
+						vc.Number = ViewModel.Phone;
+					}
+					break;
       }
 
     }
