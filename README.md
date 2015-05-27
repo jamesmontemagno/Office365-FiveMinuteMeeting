@@ -8,6 +8,20 @@ To learn more check out my Office 365 Session from Ignite 2015: http://channel9.
 ## WARNING
 This sample is using a preview edition of ADAL and it has been noted that there will be breaking changes in the future. So please be aware of that. See this blog for more details: http://www.cloudidentity.com/blog/2014/10/30/adal-net-v3-preview-pcl-xamarin-support/
 
+<h3>Update May 26 2015</h3>
+With the March refresh of ADAL.v3 Preview several improvements were made as it relates to Xamarin 
+<ul>
+	<li>
+		ADAL moves to the new Xamarin Unified API for iOS
+	</li>
+	<li>
+		Provides a Portable Class Library with easy to use authentication
+	</li>
+</ul>
+<p>
+
+Understanding that this is still in Preview and should not be used in Production, these improvements makes it easier to work with ADAL in our projects. Please reference this blog post [here](http://www.cloudidentity.com/blog/2015/03/04/adal-v3-preview-march-refresh/) to learn more about the March Refresh and this blog [here](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/3.1.203031538-alpha) to see all that is included with the NuGet package for the lastst ADAL build.
+
 Additionally, for more Office 365 APIs see their GitHub: http://github.com/officedev
 
 We are also using a preview release of ADAL, you must configure MyGet packages:
