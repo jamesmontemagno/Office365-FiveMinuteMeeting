@@ -42,8 +42,8 @@ This mobile app is brought to you by your friends at [Xamarin](http://www.xamari
 
 ### Screenshots
 
-![](Screenshots/android1.png) ![](Screenshots/android2.png)
-![](Screenshots/ios1.png) ![](Screenshots/ios2.png)
+![Android screenshot of application showing list of people](Screenshots/android1.png) ![Android screenshot of person details page](Screenshots/android2.png)
+![iOS screenshot of application showing list of people](Screenshots/ios1.png) ![iOS screenshot of person details page](Screenshots/ios2.png)
 
 ### Development by:
 - James Montemagno: [Twitter](http://www.twitter.com/jamesmontemagno) | [Blog](http://motzcod.es) | [GitHub](http://www.github.com/jamesmontemagno)
