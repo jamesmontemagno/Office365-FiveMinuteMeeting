@@ -3,7 +3,7 @@ Five Minute Meeting - Office 365 and Xamarin Sample
 
 Office 365 Contact browser, editor, and ability meetings to your calendar and organize your contacts as well.
 
-To learn more check out my Office 365 Session from Ignite 2015: http://channel9.msdn.com/Events/Ignite/2015/BRK3342
+To learn more check out my Office 365 Session from Ignite 2015: https://channel9.msdn.com/Events/Ignite/2015/BRK3342?WT.mc_id=friends-0000-jamont
 
 ## WARNING
 This sample is using a preview edition of ADAL and it has been noted that there will be breaking changes in the future. So please be aware of that. See this blog for more details: http://www.cloudidentity.com/blog/2014/10/30/adal-net-v3-preview-pcl-xamarin-support/
