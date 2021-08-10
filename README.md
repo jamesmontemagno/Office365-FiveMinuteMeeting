@@ -40,10 +40,6 @@ If you have any questions, simply find a Xamarin staff member at Evolve 2014.
 
 This mobile app is brought to you by your friends at [Xamarin](http://www.xamarin.com/).
 
-### Screenshots
-
-![Android screenshot of application showing list of people](Screenshots/android1.png) ![Android screenshot of person details page](Screenshots/android2.png)
-![iOS screenshot of application showing list of people](Screenshots/ios1.png) ![iOS screenshot of person details page](Screenshots/ios2.png)
 
 ### Development by:
 - James Montemagno: [Twitter](http://www.twitter.com/jamesmontemagno) | [Blog](http://motzcod.es) | [GitHub](http://www.github.com/jamesmontemagno)
